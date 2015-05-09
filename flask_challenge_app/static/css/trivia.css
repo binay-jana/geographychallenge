@@ -133,24 +133,28 @@ body {
     margin-bottom: 10px;
 }
 .box-content {
-    padding: 20px;
-    background-color: white;
+    padding: 1px 20px;
+    background-color: rgba(0,0,0,.8);
 }
 
 .align_left {
     text-align: left;
 }
 
+.align_center {
+    text-align: center;
+}
+
 .facebook-button {
-    margin-top: 20px;
+    margin-bottom: 20px;
     background: #3B5998;
     color: #ffffff;
     padding: 15px 50px;
     width: 150px;
-    text-align: left;
+    text-align: center;
     cursor: pointer;
     font-family: "Benton Sans", "Helvetica", "sans-serif";
-    font-size: 16px;
+    font-size: 20px;
     font-weight: normal;
     line-height: 20px;
     border-radius: 0; 
@@ -188,6 +192,7 @@ body {
     border-radius:5px 5px 0 0;
     border-top: 1px solid white;
 }
+
 .title {
     font-size: 20px;
     font-weight: 300;
@@ -195,9 +200,10 @@ body {
     margin-bottom: 50px;
 }
 .question {
-    font-size: 24px;
+    font-size: 20px;
     font-weight: 300;
-    color: #777;
+    color: #eee;
+    margin-top: 30px;
     margin-bottom: 20px;
 }
 .answer-form {
@@ -228,17 +234,33 @@ body {
     padding: 0 5px;
     margin-right: 10px;
 }
-
 .box-footer {
     padding: 10px 20px;
     background-color: #777;
     clear: both;
     color: white;
-    border-bottom: 1px solid white;
+    border-bottom: 1px solid rgba(0,0,0,.8);
     font-weight: 200;
     font-size: 16px;
     display: block;
     overflow: hidden;
     height: auto!important;
     width: auto;
+}
+.postscript-text {
+    color: #eee;
+    font-size: 20px;
+    margin-bottom: 30px;
+    font-weight: 200;
+}
+.yellow-text {
+    color: #66FFFF;
+    text-decoration: underline;
+}
+.link {
+    text-decoration: underline;
+}
+.link:hover {
+    text-decoration: none;
+    color: #33CCFF;
 }
