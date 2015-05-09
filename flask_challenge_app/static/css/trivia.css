@@ -1,0 +1,244 @@
+.navbar {
+    margin-bottom: 0;
+    background-color: #f8f8f8;
+    border-color: #e7e7e7;
+    top: 0;
+    border-width: 0 0 1px;
+    position: fixed;
+    right: 0;
+    left: 0;
+    z-index: 1030;
+    transform: translate3d(0,0,0);
+    min-height: 50px;
+    border: 1px solid transparent;
+    border-bottom: 1px solid #ddd;
+    display: block;
+    box-sizing: border-box;
+    font-weight: 200;
+    font-style: normal;
+    font-family: "Open Sans","helvetica neue",helvetica,arial,sans-serif;
+    clear: both;
+}
+.container-fluid {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+  clear: both;
+}
+div {
+  display: block;
+}
+body {
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #333;
+}
+ul {
+    display: block;
+    clear: both;
+}
+.navbar-logo {
+    margin-left: 0;
+    margin-right: 0;
+    font-size: 24px;
+    height: 33px;
+    background-size: 100%;
+    display: block;
+    margin: 7px 5px 0 0;
+}
+.nav-item {
+    border-color: #e7e7e7;
+    margin-right: 0;
+    margin-left: 0;
+    max-height: 340px;
+    display: block!important;
+    height: auto!important;
+    padding-bottom: 0;
+    overflow: visible!important;
+    width: auto;
+    float: left;
+    margin: 0;
+}
+.navbar-nav {
+  float: left;
+  margin: 0;
+  padding-left: 0;
+  margin-bottom: 0;
+  list-style: none;
+}
+.navbar-nav>li {
+  float: left;
+}
+.nav>li {
+  position: relative;
+  display: block;
+}
+.nav {
+  padding-left: 0;
+  margin-bottom: 0;
+  list-style: none;
+}
+.navbar-nav.navbar-right:last-child {
+  margin-right: -15px;
+}
+.navbar-nav>li {
+    position: relative;
+    display: block;
+}
+.navbar-nav>li>a {
+    padding: 15px 5px;
+    line-height: 20px;
+    display: block;
+}
+.navbar-items {
+    margin-left: 20px;
+    float: right!important;
+    font-weight: 500;
+    cursor: pointer;
+    
+}
+a {
+    color: #777;
+    text-decoration: none;
+}
+#googlemaps {
+    height: 100%; 
+    width: 100%; 
+    position:absolute; 
+    top: 0; 
+    left: 0; 
+    z-index: 0;
+}
+.map-overlay {
+    height: 100%; 
+    width: 100%; 
+    position:absolute; 
+    top: 0; 
+    left: 0; 
+    z-index: 1;
+}
+.main-content {
+    z-index: 1;
+    max-width: 700px;
+    margin: 0 auto;
+    padding-top: 40px;
+    height: 100%;
+}
+body {
+    font-family: "Open Sans","helvetica neue",helvetica,arial,sans-serif;
+}
+.box {
+    width: 100%;
+    margin-bottom: 10px;
+}
+.box-content {
+    padding: 20px;
+    background-color: white;
+}
+
+.align_left {
+    text-align: left;
+}
+
+.facebook-button {
+    margin-top: 20px;
+    background: #3B5998;
+    color: #ffffff;
+    padding: 15px 50px;
+    width: 150px;
+    text-align: left;
+    cursor: pointer;
+    font-family: "Benton Sans", "Helvetica", "sans-serif";
+    font-size: 16px;
+    font-weight: normal;
+    line-height: 20px;
+    border-radius: 0; 
+    white-space: nowrap;
+    display: -moz-inline-stack;
+    display: inline-block;
+    vertical-align: middle;
+    zoom: 1;
+    font-weight: 500;
+    box-shadow: 0 0 0 #888888;
+    border: 0px;
+}
+
+.facebook-button:hover {
+  color: #eeeeee;
+  background: #4e69a2;
+}
+
+.facebook-button:active {
+  position: relative;
+  top: 2px;
+  box-shadow: none;
+  color: #e2e2e2;
+  outline: none;
+}
+
+
+.box-header-name {
+    padding: 5px 20px;
+    background-color: #c94429;
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    display: inline-block;
+    border-radius:5px 5px 0 0;
+    border-top: 1px solid white;
+}
+.title {
+    font-size: 20px;
+    font-weight: 300;
+    color: #777;
+    margin-bottom: 50px;
+}
+.question {
+    font-size: 24px;
+    font-weight: 300;
+    color: #777;
+    margin-bottom: 20px;
+}
+.answer-form {
+    margin-bottom: 20px;
+}
+.rules{
+    margin: 0;
+    list-style-position: inside;
+    font-weight: 150;
+}
+.countdown-amount {
+    color: #FFFF99;
+    font-weight: 100;
+}
+.timer {
+    display: block;
+    float: left;
+}
+.green_number {
+    color: #B2FFB2;
+    font-weight: 100;
+}
+.red_number {
+    color: #FFAD99;
+}
+.is-countdown {
+    float: left;
+    padding: 0 5px;
+    margin-right: 10px;
+}
+
+.box-footer {
+    padding: 10px 20px;
+    background-color: #777;
+    clear: both;
+    color: white;
+    border-bottom: 1px solid white;
+    font-weight: 200;
+    font-size: 16px;
+    display: block;
+    overflow: hidden;
+    height: auto!important;
+    width: auto;
+}
