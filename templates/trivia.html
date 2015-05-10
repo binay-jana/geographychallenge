@@ -20,7 +20,9 @@
     var correctly_answered = [];
     var questions = [{
         time: 600,
-        description: "Name as many African countries as you can:",
+        description: "You have been challenged to name {{challenged_number}} African countries:",
+        friend_name_description: "{{friend_name}} challenged you to name {{challenged_number}} African countries",
+        default_challenged_number: 32,
         error_message: " is not an African country",
         answers: {
             "algeria": 0,
@@ -175,7 +177,6 @@ h1 {
 }
 
 .answer_box {
-  border: 1px solid black;
   padding: 5px;
   overflow: hidden;
 }
@@ -669,17 +670,12 @@ function initialize() {
 <nav class='navbar'>
         <div class="container-fluid">
             <div class="navbar-logo-holder nav-item">
-                <a class="navbar-logo" ui-sref="dashboard" href="#/">Jana Trivia Challenge for Nepal Earthquake Relief</a>
+                <a class="navbar-logo" ui-sref="dashboard" href="#/">Jana Trivia Challenge</a>
             </div>
         </div>
 </nav>
 <div class="map-overlay">
 <div class="main-content">
-  <div class="box">
-    <div class="box-content">
-      YOYO
-    </div>
-  </div>
   <div class="box">
     <div class="box-content align_left">
       <div class="topsection">
@@ -691,18 +687,24 @@ function initialize() {
             <label>
                 <input type="text" class="input_form" id="answer_box" autocomplete="off"></input>
             </label>
-            <input type="submit" class="button submit-button" id="submit_button">Submit</input>
+            <input type="submit" class="button submit-button" id="submit_button"/>
         </form>
-        <div class="green-text"><span id="added_answers"></span> Correct!  <span class="small_text">(there are still <span id="not_answered"></span> more ...)</span></div>
+        <div class="green-text"><span id="added_answers"></span> Correct!  <span class="small_text">(there are <span id="not_answered"></span> more ...)</span></div>
       </div>
       <div id='error_display'></div>
+      <div class="action_item_holder" id="challenge_box">
+          <div class="answer_boxes">
+            <div class="answer_box" id="entered_answers"></div>
+          </div>
+      </div>
     </div>
+
   </div>
   <div class="box">
     <div class="box-content align_center">
       <div class="topsection">
         <div class="question">When you are done, nominate at least 5 Facebook friends for the Challenge:</div>
-        <div class="note-text">You are effectively contributing $50 more towards the campaign by nominating your friends!</div>
+        <div class="note-text">You are effectively contributing $80 more towards the campaign by nominating your friends!</div>
       </div>
       <div>
         <input onclick="gogogo()" class="facebook-button button" value="Nominate"></input>
@@ -712,14 +714,6 @@ function initialize() {
       </div>
     </div>
   </div>
-<!-- <div class="action_item_holder" id="challenge_box">
-    <div class="answer_boxes">
-      <div class="answer_box_title">Your answers:</div>
-      <div class="answer_box" id="entered_answers"></div>
-      <div class="answer_box_title" id="missed_numbers">You missed:</div>
-      <div class="answer_box" id="missed_answers"></div>
-    </div>
-</div> -->
 </div>
 </div>
 </body>
