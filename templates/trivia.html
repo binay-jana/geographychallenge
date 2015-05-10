@@ -320,6 +320,7 @@ window.onload = function() {
     populate_nomination_challenges();
     refresh_answer_counts();
     start_timer();
+    welcome_user();
     $('#access_code_form').submit(function (event) {
         var answer = $.trim($('input#answer_box').val().toLowerCase());
         var error_string = null;
@@ -359,11 +360,16 @@ window.onload = function() {
     }
 
     function flash(error_string) {
-        var b = $('#error_display');
         $('#error_display').flash_message({
             text: error_string,
             how: 'append'
         });
+    }
+
+    function welcome_user() {
+
+      var string = '<div class="box-content align_left welcome_div">Welcome to Jana Trivia Challenge fundraiser for the the earthquake victims in Nepal. Please try the challenge  and if you fail, donate <span class="green_number">$15</span> to the fundraiser.</div>';
+      $('#welcomemessage').html(string).delay(5000).fadeOut(500);
     }
 
     function stopChallenge() {
@@ -441,6 +447,8 @@ function populate_nomination_challenges() {
   <div class="title">
     Jana Trivia Challenge
   </div>
+  <div class="box" id="welcomemessage">
+  </div>
   <div class="box">
     <div class="box-content align_left translucentblack">
       <div class="topsection">
@@ -485,11 +493,11 @@ function populate_nomination_challenges() {
     <div class="box-content align_left white">
       <div class="button">Donate Now</div>
       </br>
-      Who are we: Jana is an internet startup in Boston whose mission is to make internet free for the next billion. We currently serve 25+ million users in different emerging markets. Our website|A recent Forbes article about us.
+      Who are we: Jana is an internet startup in Boston whose mission is to make internet free for the next billion. We currently serve 25 million + users in different emerging markets. Click here to view a recent Forbes article about us.
       </br>
       How will the donation be used: The donations collected from this campaign will be handed over to Nepal's Prime Minister's Disaster Relief Fund.
       </br>
-      *The fund is managed by a democratically elected Nepali government in coordination with the technocrats in the National Planning Commission.
+      Why did we choose PM relief Fund: The fund is managed by a democratically elected Nepali government in coordination with the technocrats in the National Planning Commission.
       </br>
     </div>
     <div class="box-content align_left white">

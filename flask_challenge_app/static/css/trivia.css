@@ -115,6 +115,14 @@ body {
 .translucentblack {
     background-color: rgba(0,0,0,.65);
 }
+.welcome_div {
+    background-color: rgba(193,66,66,.90);
+    font-size: 18px;
+    color: white;
+    padding: 10px 20px;
+    font-weight: 200;
+}
+
 .white {
     background-color: #fff;
     color: #222;
