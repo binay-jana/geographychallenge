@@ -38,15 +38,6 @@ ul {
     display: block;
     clear: both;
 }
-.navbar-logo {
-    margin-left: 0;
-    margin-right: 0;
-    font-size: 24px;
-    height: 33px;
-    background-size: 100%;
-    display: block;
-    margin: 7px 5px 0 0;
-}
 .nav-item {
     border-color: #e7e7e7;
     margin-right: 0;
@@ -91,13 +82,7 @@ ul {
     line-height: 20px;
     display: block;
 }
-.navbar-items {
-    margin-left: 20px;
-    float: right!important;
-    font-weight: 500;
-    cursor: pointer;
-    
-}
+
 a {
     color: #777;
     text-decoration: none;
@@ -111,9 +96,8 @@ a {
 }
 .main-content {
     z-index: 1;
-    max-width: 700px;
+    max-width: 800px;
     margin: 0 auto;
-    padding-top: 80px;
 }
 body {
     font-family: "Open Sans","helvetica neue",helvetica,arial,sans-serif;
@@ -124,7 +108,19 @@ body {
 }
 .box-content {
     padding: 1px 20px;
-    background-color: rgba(0,0,0,.8);
+}
+.orange {
+    background-color: #c9442a;
+}
+.translucentblack {
+    background-color: rgba(0,0,0,.65);
+}
+.white {
+    background-color: #fff;
+    color: #222;
+}
+.faded-white {
+    background-color: #ddd;
 }
 
 .align_left {
@@ -215,13 +211,6 @@ body {
     border-radius:5px 5px 0 0;
     border-top: 1px solid white;
 }
-
-.title {
-    font-size: 20px;
-    font-weight: 300;
-    color: #777;
-    margin-bottom: 50px;
-}
 .topsection {
     margin-top: 30px;
     margin-bottom: 20px;
@@ -275,13 +264,17 @@ body {
 }
 .green-text {
     color: #19D175;
-    font-weight: 200;
+    font-weight: 500;
+}
+.orange-text {
+    color: #c9442a;
+    font-weight: 500;
 }
 .big-text {
     font-size: 20px;
 }
 .postscript-text {
-    color: #eee;
+    color: #444;
     font-size: 20px;
     margin-bottom: 30px;
     font-weight: 200;
@@ -307,7 +300,12 @@ body {
 
 .note-text {
     font-size: 16px;
+}
+.lightblue {
     color: #CCEBF5;
+}
+.grey {
+    color: #888;
 }
 .small_text {
     color: #eee;
@@ -319,22 +317,51 @@ body {
   display: none;
 }
 html { 
-  background: url(http://mediad.publicbroadcasting.net/p/shared/npr/styles/x_large/nprshared/201505/404000030.jpg) no-repeat center center fixed; 
+  background: url(http://si.wsj.net/public/resources/images/BN-IH841_0508br_J_20150507195355.jpg) no-repeat center center fixed; 
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
 }
+
 label.nomination {
     display: block;
     font-size: 18px;
-    color: #eee;
-}
-.nomination_input {
-
+    color: #444;
 }
 
-
-
+.navbar-logo {
+    color: #0077b5;
+    margin-left: 0;
+    margin-right: 0;
+    font-size: 24px;
+    height: 33px;
+    background-size: 100%;
+    display: block;
+    margin: 7px 5px 0 0;
+}
+.navbar-items {
+    margin-left: 20px;
+    float: right!important;
+    font-weight: 200;
+    cursor: pointer;
+}
+.description {
+    display: block;
+}
+.black-text {
+    font-size: 20px;
+    font-weight: 300;
+    color: #333;
+}
+.title {
+    margin-top: 30px;
+    text-align: center;
+    font-size: 35px;
+    font-weight: 600;
+    color: #fff;
+    cursor: default;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
 
 

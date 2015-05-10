@@ -254,6 +254,7 @@ a {
 a:hover{
   color: #0077b5;
 }
+
 </style>
 <script>
 function gogogo() {
@@ -435,20 +436,16 @@ function populate_nomination_challenges() {
 }
 
 </script>
-<nav class='navbar'>
-        <div class="container-fluid">
-            <div class="navbar-logo-holder nav-item">
-                <a class="navbar-logo" ui-sref="dashboard" href="#/">Jana Trivia Challenge</a>
-            </div>
-        </div>
-</nav>
 <div class="map-overlay">
 <div class="main-content">
+  <div class="title">
+    Jana Trivia Challenge
+  </div>
   <div class="box">
-    <div class="box-content align_left">
+    <div class="box-content align_left translucentblack">
       <div class="topsection">
         <div class="question" id='question_text'></div>
-        <div class="note-text">Enter one at a time and press "enter" or click "Submit"...</div>
+        <div class="note-text lightblue">Enter one at a time and press "enter" or click "Submit"...</div>
       </div>
       <div class="answer-form">
         <form id="access_code_form">
@@ -457,20 +454,19 @@ function populate_nomination_challenges() {
             </label>
             <input type="submit" class="button submit-button" id="submit_button"/>
         </form>
-        <div class="green-text big-text"><span id="added_answers"></span> Correct!  <span class="small_text">(there are <span id="not_answered"></span> more ...)</span> <span class="giveup">Give up?</span></div>
+        <div class="green-text big-text"><span id="added_answers"></span> Correct!  <span class="small_text">(there are <span id="not_answered"></span> more ...)</span></div>
       </div>
       <div id='error_display'></div>
       <div class="answer_boxes" id="answer_boxes">
         <div class="answer_box" id="entered_answers"></div>
       </div>
     </div>
-
   </div>
   <div class="box">
-    <div class="box-content align_center">
+    <div class="box-content align_center faded-white">
       <div class="topsection">
-        <div class="question">When you are done, nominate <span class="green-text">at least 5</span> Facebook friends for the Challenge:</div>
-        <div class="note-text">You are effectively contributing <span class="green-text">$45 more</span> towards the campaign by nominating your friends!</div>
+        <div class="black-text">When you are done, nominate <span class="orange-text">at least 5</span> Facebook friends for the Challenge:</div>
+        <div class="note-text grey">Spread the word. Your Facebook share is worth more than <span class="orange-text">$60</span> to the campaign!</div>
       </div>
       <div>
         <label class="nomination">
@@ -478,16 +474,67 @@ function populate_nomination_challenges() {
           <select class="nomination_input" id="challenge_selection">
           </select>
         </label>
-        <label class="nomination">
-          Passing Score:
-          <input type="text" class="nomination_input" id="answer_box" autocomplete="off"></input>
-        </label>
         <input onclick="gogogo()" class="facebook-button button" value="Nominate"></input>
       </div>
       <div class="postscript-text">
         Or use this link: <span class="link-text link">http://bit.ly/1IsnzIq</span>
       </div>
     </div>
+  </div>
+  <div class="box">
+    <div class="box-content align_left white">
+      <div class="button">Donate Now</div>
+      </br>
+      Who are we: Jana is an internet startup in Boston whose mission is to make internet free for the next billion. We currently serve 25+ million users in different emerging markets. Our website|A recent Forbes article about us.
+      </br>
+      How will the donation be used: The donations collected from this campaign will be handed over to Nepal's Prime Minister's Disaster Relief Fund.
+      </br>
+      *The fund is managed by a democratically elected Nepali government in coordination with the technocrats in the National Planning Commission.
+      </br>
+    </div>
+    <div class="box-content align_left white">
+      7.8M Nepal Earthquake in numbers:
+      <div class="stats-container">
+        <div class="stat">
+          <span class="stat_title">Death Toll:</span>
+          <span class="stat_number">8,019</span>
+        </div>
+        <div class="stat">
+          <span class="stat_title">Serious Injuries:</span>
+          <span class="stat_number">17,866</span>
+        </div>
+        <div class="stat">
+          <span class="stat_title">Houses Destroyed:</span>
+          <span class="stat_number">299,588</span>
+        </div>
+        <div class="stat">
+          <span class="stat_title">Houses Damaged:</span>
+          <span class="stat_number">269,107</span>
+        </div>
+        <div class="stat">
+          <span class="stat_title">Children Affected:</span>
+          <span class="stat_number">1 million + </span>
+        </div>
+        <div class="stat">
+          <span class="stat_title">Immediately Necessary Aid:</span>
+          <span class="stat_number">$450 million +</span>
+        </div>
+        <div class="stat">
+          <span class="stat_title">Aid received by the Government:</span>
+          <span class="stat_number">$7 million</span>
+        </div>
+      </div> 
+      <div>
+        Youtube video.
+      </div>
+      <div>
+        Facebook Pictures
+      </div>
+      <div>
+        Related links
+      </div>
+    </div>
+
   </div>
 </div>
 </div>
