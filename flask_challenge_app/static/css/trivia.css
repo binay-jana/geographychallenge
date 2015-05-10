@@ -145,19 +145,17 @@ body {
     text-align: center;
 }
 
-.facebook-button {
+.button {
     margin-bottom: 20px;
-    background: #3B5998;
-    color: #ffffff;
     padding: 15px 50px;
-    width: 150px;
+    min-width: 100px;
     text-align: center;
-    cursor: pointer;
     font-family: "Benton Sans", "Helvetica", "sans-serif";
     font-size: 20px;
     font-weight: normal;
     line-height: 20px;
-    border-radius: 0; 
+    border-radius: 0;
+    cursor: pointer;
     white-space: nowrap;
     display: -moz-inline-stack;
     display: inline-block;
@@ -166,6 +164,42 @@ body {
     font-weight: 500;
     box-shadow: 0 0 0 #888888;
     border: 0px;
+}
+
+.input_form {
+    margin-right: 30px;
+    margin-bottom: 20px;
+    min-width: 300px;
+    padding: 12px 5px;
+    font-size: 20px;
+    background: white;
+    background: #fdfdfd;
+    vertical-align: middle;
+    -webkit-box-shadow: 0 0 3px rgba(0,0,0,0.1) inset;
+    -moz-box-shadow: 0 0 3px rgba(0,0,0,0.1) inset;
+    box-shadow: 0 0 3px rgba(0,0,0,0.1) inset;
+    border: 1px solid #c1c1c1;
+    line-height: 20px;
+    color: #333;
+}
+
+.input_form:hover {
+    border: 1px solid #008FB2;
+}
+
+.submit-button {
+    background: #19D175;
+    color: #fff;
+}
+
+.submit-button:hover {
+    background: #4DDF9E;
+}
+
+.facebook-button {
+    background: #3B5998;
+    color: #ffffff;
+    width: 150px;
 }
 
 .facebook-button:hover {
@@ -180,7 +214,6 @@ body {
   color: #e2e2e2;
   outline: none;
 }
-
 
 .box-header-name {
     padding: 5px 20px;
@@ -199,15 +232,18 @@ body {
     color: #777;
     margin-bottom: 50px;
 }
+.topsection {
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
 .question {
     font-size: 20px;
     font-weight: 300;
     color: #eee;
-    margin-top: 30px;
-    margin-bottom: 20px;
 }
 .answer-form {
-    margin-bottom: 20px;
+    margin-bottom: 30px;
 }
 .rules{
     margin: 0;
@@ -247,14 +283,19 @@ body {
     height: auto!important;
     width: auto;
 }
+.green-text {
+    color: #19D175;
+    font-size: 20px;
+    font-weight: 200;
+}
 .postscript-text {
     color: #eee;
     font-size: 20px;
     margin-bottom: 30px;
     font-weight: 200;
 }
-.yellow-text {
-    color: #66FFFF;
+.link-text {
+    color: #33CCFF;
     text-decoration: underline;
 }
 .link {
@@ -262,5 +303,14 @@ body {
 }
 .link:hover {
     text-decoration: none;
-    color: #33CCFF;
+    color: #66FFFF;
+}
+.note-text {
+    font-size: 16px;
+    color: #CCEBF5;
+}
+.small_text {
+    color: #ccc;
+    font-size: 16px;
+    font-style: italic;
 }
