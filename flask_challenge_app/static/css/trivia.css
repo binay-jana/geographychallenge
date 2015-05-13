@@ -99,9 +99,9 @@ a {
     max-width: 801px;
     margin: 38px auto;
     background: #fff;
-    padding: 47px 73px 26px;
-    border-radius: 5px;
+    padding: 47px 50px 26px;
     box-sizing: border-box;
+    min-width: 400px;
 }
 body {
     font-family: helvetica,arial,sans-serif;
@@ -143,6 +143,10 @@ body {
 .align_center {
     text-align: center;
 }
+a.button:hover {
+    text-decoration: none;
+    color: white;
+}
 
 .button {
     padding: 15px 50px;
@@ -169,7 +173,7 @@ body {
 }
 
 .input_form {
-    margin-right: 30px;
+    margin-right: 10px;
     min-width: 40%;
     padding: 12px 5px;
     font-size: 20px;
@@ -297,7 +301,6 @@ select {
 
 .note-text {
     font-size: 16px;
-    font-style: italic;
     color: #777;
     margin-top: 5px;
     margin-bottom: 5px;
@@ -316,7 +319,9 @@ select {
 }
 .answer_boxes {
   margin-top: 10px;
-  display: none;
+}
+.submit-button {
+    margin-right: 10px;
 }
 html { 
   -webkit-background-size: cover;
@@ -370,6 +375,7 @@ label.nomination {
     margin-bottom: 40px;
 }
 .more_link {
+    margin-left: 5px;
     font-size: 16px;
     color: #1257f3;
     cursor: pointer;
@@ -397,7 +403,12 @@ label.nomination {
 }
 .center_button {
     text-align: center;
+}
+.toppadding25 {
     padding-top: 25px;
+}
+.italic_text {
+    font-style: italic;
 }
 .nomination-form {
     text-align: center;
@@ -411,6 +422,9 @@ label.nomination {
 }
 #donation_button {
     display: none;
+}
+.small-text {
+    font-size: 12px;
 }
 html { 
   background: url(http://si.wsj.net/public/resources/images/BN-IH841_0508br_J_20150507195355.jpg) no-repeat center center fixed; 
