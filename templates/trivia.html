@@ -3,26 +3,95 @@
 <head>
 <meta charset=utf-8 />
 <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=2.0">
-<meta property="og:title" content="Highschool Geography Challenge" />
+<meta property="og:title" content="Trivia Challenge for Nepal Earthquake Relief" />
 <meta property="og:type" content="article" />
-<meta property="og:image" content="http://static.dnaindia.com/sites/default/files/1890206.jpg" />
-<meta property="og:url" content="https://42b93ec2.ngrok.com/a"/>
+<meta property="og:image" content="https://42b93ec2.ngrok.com/static/images/fb_share_pic.jpg" />
+<meta property="og:url" content="https://42b93ec2.ngrok.com/0"/>
 <meta property="fb:app_id" content="1673890419499781"/>
-<meta property="og:description" content="Answer 1 simple question; Nominate 5 friends; If you do not score more than 70% of the participants, donate $15 to help the victims of the 7.8M earthquake in Nepal." />
+<meta property="og:description" content="Answer 1 simple trivia and challenge your friends to help the victims of 7.8M earthquake in Nepal."/>
 <meta property="og:title" content="Jana Trivia Challenge - A Fundraiser 7.8M earthquake victims in Nepal!"/>
-<title>Jana Trivia Challenge for Nepal Earthquake Relief</title>
+<title>Trivia Challenge for Nepal Earthquake Relief</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <link href="/static/css/trivia.css" media="all" rel="stylesheet" type="text/css"/>
 <script>
     var correctly_answered = [];
     var questions = [{
-        time: 300,
-        challenge_description: "Names of the African Countries",
+        time: 250,
+        question_id: 0,
+        total_answers: 30,
+        description: "Name {number} of the Largest 30 Cities in the World",
+        passing_score: 20,
+        answers: {
+            "tokyo": 0,
+            "jakarta": 1,
+            "karachi": 2,
+            "manila": 3,
+            "delhi": 4,
+            "seoul": 5,
+            "shanghai": 6,
+            "beijing": 7,
+            "new york city": 8,
+            "new york": 8,
+            "guangzhou": 9,
+            "sao paulo": 10,
+            "mexico city": 11,
+            "mumbai": 12,
+            "osaka": 13,
+            "lagos": 14,
+            "moscow": 15,
+            "dhaka": 16,
+            "lahore": 17,
+            "los angeles": 18,
+            "bangkok": 19,
+            "kolkata": 20,
+            "buenos aires": 21,
+            "tehran": 22,
+            "istanbul": 23,
+            "shenzhen": 24,
+            "rio de janeiro": 25,
+            "kinshasa": 26,
+            "tianjin": 27,
+            "paris": 28,
+            "lima": 29
+        },
+        'names': [
+            'Tokyo',
+            'Jakarta',
+            'Karachi',
+            'Manila',
+            'Delhi',
+            'Seoul',
+            'Shanghai',
+            'Beijing',
+            'New York City',
+            'Guangzhou',
+            'Sao Paulo',
+            'Mexico City',
+            'Mumbai',
+            'Osaka',
+            'Lagos',
+            'Moscow',
+            'Dhaka',
+            'Lahore',
+            'Los Angeles',
+            'Bangkok',
+            'Kolkata',
+            'Buenos Aires',
+            'Tehran',
+            'Istanbul',
+            'Shenzhen',
+            'Rio de Janeiro',
+            'Kinshasa',
+            'Tianjin',
+            'Paris',
+            'Lima'
+        ]
+    }, {
+        time: 350,
+        question_id: 1,
         total_answers: 54,
-        description: "Name {number} African countries",
-        friend_name_description: "{friend_name} challenged you to name {challenged_number} African countries",
+        description: "Name at least {number} African countries",
         passing_score: 32,
-        error_message: " is not an African country",
         answers: {
             "algeria": 0,
             "angola": 1,
@@ -140,10 +209,27 @@
             "Zambia",
             "Zimbabwe"
         ],
-        question_id: 0 
     }]
-    var variant = Math.floor((Math.random() * questions.length));
-
+    function getQueryParams(qs) {
+        qs = qs.split("+").join(" ");
+        var params = {}, tokens, re = /[?&]?([^=]+)=([^&]*)/g;
+        while (tokens = re.exec(qs)) {
+            params[decodeURIComponent(tokens[1])]
+                = decodeURIComponent(tokens[2]);
+        }
+        return params;
+    }
+    var params = getQueryParams(window.location.search.substring(1));
+    var variant = 1
+    if (params.fb_ref!=null){
+      var a = params.fb_ref.split(' ')[0];
+      if (!isNaN(a) && parseInt(a) < questions.length && parseInt(a) >= 0) {
+        variant = parseInt(a);
+      }
+    }    
+ 
+    console.log(params);
+    console.log(variant);
 </script>
 <style>
 #challenge_box {}
@@ -175,18 +261,12 @@ h1 {
   margin-bottom: 10px;
   font-weight: bold;
 }
-
-.answer_box {
-  padding: 5px;
-  overflow: hidden;
-}
 .answered_item {
   padding: 2px;
   padding-right: 5px;
   padding-left: 5px;
   text-align: center;
-  border: 1px solid #008A2E;
-  background-color: #CCEBD6;
+  background-color: #B5BABA;
   margin: 3px;
   float: left;
 }
@@ -195,8 +275,7 @@ h1 {
   padding-right: 5px;
   padding-left: 5px;
   text-align: center;
-  border: 1px solid #CC2900;
-  background-color: #FFEBE6;
+  background-color: #E0B3A8;
   margin: 3px;
   float: left;
 }
@@ -240,7 +319,22 @@ div#bd {
 
 
 @media screen and (max-width: 600px) {
-
+    .main-content {
+        z-index: 1;
+        max-width: 801px;
+        margin: 38px auto;
+        background: #fff;
+        padding: 47px 10px 26px;
+        box-sizing: border-box;
+    }
+    input {
+      width: 100%;
+      margin-bottom: 5px;
+    }
+    select {
+      overflow: hidden;
+      font-size: 12px;
+    }
 }
 a {
   text-decoration:none;
@@ -256,22 +350,6 @@ a:hover{
 }
 
 </style>
-<script>
-function gogogo() {
-  FB.ui({
-    method: 'feed',
-    link: 'http://phpied.com',
-    picture: 'http://fbrell.com/f8.jpg',
-    name: 'Sharrrre!',
-    caption: 'Awesomesauce',
-    description: 'Must read daily!'
-  });
-}
-/*
-$('#shortly').countdown({until: shortly,  
-    onExpiry: liftOff, onTick: watchCountdown}); 
-*/
-</script>
 </head>
 <body>
 <script>
@@ -316,19 +394,18 @@ window.fbAsyncInit = function() {
   FB.init({appId: 1673890419499781, status: false});
 };
 
+var created_correct_answers = {};
+
 window.onload = function() {
     populate_nomination_challenges();
-    refresh_answer_counts();
-    start_timer();
-    welcome_user();
     $('#access_code_form').submit(function (event) {
+        event.preventDefault();
         var answer = $.trim($('input#answer_box').val().toLowerCase());
         var error_string = null;
         if(questions[variant].answers[answer] != null){
             var answered_item = questions[variant].answers[answer];
             if ($.inArray(answered_item, correctly_answered)==-1) {
               append_answer(answered_item);
-              refresh_answer_counts();
             } else {
               error_string = "You already entered " + questions[variant].names[answered_item];
             }
@@ -336,19 +413,34 @@ window.onload = function() {
             error_string = answer + questions[variant].error_message
         }
         if(error_string!=null) {
-            flash(error_string);
+            append_wrong_answer(answer);
         }
         $('input#answer_box').val('');
-        event.preventDefault();
+        
         return false;
     });
 
-    function refresh_answer_counts() {
-        var correct_answers = correctly_answered.length;
-        var total_answers = questions[variant].names.length;
-        $('#added_answers').text(correct_answers);
-        $('#not_answered').text(total_answers - correct_answers);
-    }
+    $('#creation_answers_form').submit(function (event) {
+        event.preventDefault();
+        var answer = $.trim($('input#creation_answer_box').val().toLowerCase());
+        if(created_correct_answers[answer]) {
+          return;
+        }
+        created_correct_answers[answer] = 1;
+        $('input#creation_answer_box').val('');
+        $('#quiz_creation_answers').show();
+        var $answer_el = $('<div />');
+        $answer_el.addClass("answered_item").text(answer);
+        var $cross = $('<img src="/static/images/x.png" width="10px" class="x_created_answers"/>');
+        $cross.click(function(event) {
+          $answer_el.remove();
+          delete created_correct_answers[$answer_el.text()];
+          console.log(created_correct_answers);
+        });
+        $answer_el.append($cross)
+        $('#quiz_creation_answers').append($answer_el);
+        
+    });
 
     function append_answer(answered_item) {
         $('#answer_boxes').show();
@@ -359,17 +451,19 @@ window.onload = function() {
         $('#entered_answers').append($answer_el);
     }
 
+    function append_wrong_answer(answered_item) {
+        console.log(answered_item);
+        $('#answer_boxes').show();
+        $answer_el = $('<span />');
+        $answer_el.addClass("missed_item").text(answered_item);
+        $('#entered_answers').append($answer_el);
+    }
+
     function flash(error_string) {
         $('#error_display').flash_message({
             text: error_string,
             how: 'append'
         });
-    }
-
-    function welcome_user() {
-
-      var string = '<div class="box-content align_left welcome_div">Welcome to Jana Trivia Challenge fundraiser for the the earthquake victims in Nepal. Please try the challenge  and if you fail, donate <span class="green_number">$15</span> to the fundraiser.</div>';
-      $('#welcomemessage').html(string).delay(5000).fadeOut(500);
     }
 
     function stopChallenge() {
@@ -388,46 +482,48 @@ window.onload = function() {
     }
 
     function populateQuestion(variant) {
-        $('#question_text').html(
+        $('#number_of_seconds').text(questions[variant].time)
+        $('#challenge_prompt').html(
           str_replace(['number'],
             [questions[variant].passing_score],
-            questions[variant].description +  " or Donate $15 to the Earthquake victims"
+            "Your Challenge: " + questions[variant].description
           ));
     }
-
-    function showAnswers() {
-        for (index in questions[variant].names) {
-            if($.inArray(parseInt(index), correctly_answered)==-1) {
-                $answer_el = $('<span />');
-                var full_name = questions[variant].names[index];
-
-                $answer_el.addClass("missed_item").text(full_name);
-                $('#missed_answers').show();
-                $('#missed_answers').append($answer_el);
-                $('#missed_numbers').show();
-            }
-        }
-
-    }
-
     populateQuestion(variant);
 }
 
+function get_nominated_question() {
+    return $('#challenge_selection').val();
+}
+
 function gogogo() {
-  FB.ui({
-    method: 'share',
-    href: 'https://42b93ec2.ngrok.com/a',
-  });
+    var url = 'http://42b93ec2.ngrok.com/' + get_nominated_question();
+    var question = get_nominated_question() + " asdf";
+
+    FB.ui({
+        method: 'share_open_graph',
+        action_type: 'og.likes',
+        action_properties: JSON.stringify({
+          object:'http://42b93ec2.ngrok.com',
+          ref: question + '',
+        }),
+        href: url
+    });
 }
 
 function start_timer() {
     var time_left = questions[variant].time;
     function timer() {
         time_left -= 1;
-        $('#submit_button').prop('value', "Submit ("+ time_left + " seconds left)");
+        if (time_left < 0) {
+            clearInterval(counter);
+            showResults();
+            return
+        }
+        $('#time_left').text(time_left);
     }
-    var counter=setInterval(timer, 1000);
-
+    $('#time_left').text(time_left);
+    var counter = setInterval(timer, 1000);
 }
 
 function str_replace(replaceArray, replaceWith, myString) {
@@ -438,111 +534,173 @@ function str_replace(replaceArray, replaceWith, myString) {
 }
 
 function populate_nomination_challenges() {
-
+  var options = $('#challenge_selection');
+  $.each(questions, function() {
+    var question_item = str_replace(
+      ['number'],
+      [this.passing_score],
+      this.description
+    );
+    options.append($("<option />").val(this.question_id).text(question_item));
+  });
 }
 
+function startquiz() {
+  $('#answer_form').show();
+  $('#start_button').hide();
+  $('#donation_button').hide();
+  start_timer();
+}
+
+function populateAnswers() {
+    for (index in questions[variant].names) {
+        if($.inArray(parseInt(index), correctly_answered)==-1) {
+            $answer_el = $('<span />');
+            var full_name = questions[variant].names[index];
+            $answer_el.addClass("missed_item").text(full_name);
+            $('#final_missed_answers').append($answer_el);
+        } else {
+            $answer_el = $('<span />');
+            var full_name = questions[variant].names[index];
+            $answer_el.addClass("answered_item").text(full_name);
+            $('#final_entered_answers').append($answer_el);
+        }
+    }
+}
+
+
+function showResults() {
+  var result_header = "Congratulations, you passed the Challenge";
+  if (correctly_answered.length < questions[variant].passing_score) {
+    result_header = "You needed " + questions[variant].passing_score + " to pass.. you only got " + correctly_answered.length;
+  }
+  populateAnswers();
+  $('#challenge_prompt').text(result_header);
+  $('#challege_subtext').hide();
+  $('#answer_form').hide();
+  $('#donation_button').show();
+}
+
+function load_create() {
+  $('#challenge_box').hide();
+  $('#share_box').hide();
+  $('#create_box').show();
+}
+
+function cancelcreate() {
+  $('#challenge_box').show();
+  $('#share_box').show();
+  $('#create_box').hide(); 
+  $("html, body").animate({ scrollTop: $(document).height() }, "fast");
+}
 </script>
 <div class="map-overlay">
+<div class="top-header">
+</div>
 <div class="main-content">
   <div class="title">
-    Jana Trivia Challenge
+    Trivia Challenge
   </div>
-  <div class="box" id="welcomemessage">
+  <div class="subtitle">
+    A fundraiser for the Nepali Earthquake victims organized by <a class="more_link" id="about_jana" href="https://jana.com" target="_blank"><img src="/static/images/jana_logo.png" width="90px" style="position:relative;  top: 7px;"></a>
   </div>
   <div class="box">
-    <div class="box-content align_left translucentblack">
+<!--     <div class="box-content align_left description_text some_space_below">
+      The 2015 Nepal earthquake killed more than 8,000 people in the country. More than 300,000 houses were completely destroyed and hundreds of villages were completely flattened across the country. Reconstruction will take years.
+    </div> -->
+    <div class="box-content align_left description_text some_space_below">
+      The goal of this challenge is to raise money for the Nepali Government's Earthquake Relief Fund with a simple game. Your friend has selected a challenge for you. Just try the challenge, and if you do not pass, donate $15 to our fundraising campaign. Complete the challenge by challenging 5 other friends!
+    </div>
+  </div>
+  <div class="box" id="challenge_box">
+    <div class="box-content align_left gray_box" id="quiz">
       <div class="topsection">
-        <div class="question" id='question_text'></div>
-        <div class="note-text lightblue">Enter one at a time and press "enter" or click "Submit"...</div>
+        <div class="question" id='challenge_prompt'></div>
+        <div class="note-text italic_text" id='challege_subtext'>You have <span id="number_of_seconds">60</span> seconds. Enter one at a time and press "enter" or click "Submit"...</div>
       </div>
-      <div class="answer-form">
+      <div class="answer-form" id="answer_form">
         <form id="access_code_form">
             <label>
                 <input type="text" class="input_form" id="answer_box" autocomplete="off"></input>
             </label>
-            <input type="submit" class="button submit-button" id="submit_button"/>
+            <input type="submit" class="button submit-button" id="submit_button" value="Submit"/><span class="note-text">(<span id="time_left">26</span> seconds left)</span>
         </form>
-        <div class="green-text big-text"><span id="added_answers"></span> Correct!  <span class="small_text">(there are <span id="not_answered"></span> more ...)</span></div>
+        <div class="answer_boxes" id="answer_boxes">
+          <div class="answer_box" id="entered_answers"></div>
+        </div>
       </div>
-      <div id='error_display'></div>
-      <div class="answer_boxes" id="answer_boxes">
-        <div class="answer_box" id="entered_answers"></div>
+      <div id="start_button" class="center_button toppadding25">
+        <input type="submit" class="button" onclick="startquiz()" value="Ready? Start!"></input>
+      </div>
+      <div id="donation_button">
+        <div class="answer_boxes">
+          You answered: 
+          <div class="answer_box" id="final_entered_answers"></div>
+          You missed:
+          <div class="answer_box" id="final_missed_answers"></div>
+        </div>
+        <div class="align_center toppadding25">
+            <a class="button" href="https://life.indiegogo.com/fundraisers/nepal-earthquake-relief-fund" target="_blank">Click here to make a donation now</a>
+        </div>
       </div>
     </div>
   </div>
-  <div class="box">
-    <div class="box-content align_center faded-white">
+  <div class="box" id="share_box">
+    <div class="box-content align_left gray_box">
       <div class="topsection">
-        <div class="black-text">When you are done, nominate <span class="orange-text">at least 5</span> Facebook friends for the Challenge:</div>
-        <div class="note-text grey">Spread the word. Your Facebook share is worth more than <span class="orange-text">$60</span> to the campaign!</div>
+        <div class="question">Next: Nominate 5 Facebook friends for a Challenge!</div>
       </div>
-      <div>
-        <label class="nomination">
-          Challenge:
+      <div class="nomination-form">
+        <div>
           <select class="nomination_input" id="challenge_selection">
+            <option value="default">Select an existing challenge for your friends</option>
           </select>
-        </label>
-        <input onclick="gogogo()" class="facebook-button button" value="Nominate"></input>
-      </div>
-      <div class="postscript-text">
-        Or use this link: <span class="link-text link">http://bit.ly/1IsnzIq</span>
+        </div>
+        <div>
+          <div onclick="gogogo()" class="facebook-button button">Challenge</div>
+        </div>
+        <div class="postscript-text">Or</div>
+        <div>
+          <div onclick="load_create()" class="create_own button">Create your own Trivia!</div>
+        </div>
       </div>
     </div>
   </div>
-  <div class="box">
-    <div class="box-content align_left white">
-      <div class="button">Donate Now</div>
-      </br>
-      Who are we: Jana is an internet startup in Boston whose mission is to make internet free for the next billion. We currently serve 25 million + users in different emerging markets. Click here to view a recent Forbes article about us.
-      </br>
-      How will the donation be used: The donations collected from this campaign will be handed over to Nepal's Prime Minister's Disaster Relief Fund.
-      </br>
-      Why did we choose PM relief Fund: The fund is managed by a democratically elected Nepali government in coordination with the technocrats in the National Planning Commission.
-      </br>
-    </div>
-    <div class="box-content align_left white">
-      7.8M Nepal Earthquake in numbers:
-      <div class="stats-container">
-        <div class="stat">
-          <span class="stat_title">Death Toll:</span>
-          <span class="stat_number">8,019</span>
-        </div>
-        <div class="stat">
-          <span class="stat_title">Serious Injuries:</span>
-          <span class="stat_number">17,866</span>
-        </div>
-        <div class="stat">
-          <span class="stat_title">Houses Destroyed:</span>
-          <span class="stat_number">299,588</span>
-        </div>
-        <div class="stat">
-          <span class="stat_title">Houses Damaged:</span>
-          <span class="stat_number">269,107</span>
-        </div>
-        <div class="stat">
-          <span class="stat_title">Children Affected:</span>
-          <span class="stat_number">1 million + </span>
-        </div>
-        <div class="stat">
-          <span class="stat_title">Immediately Necessary Aid:</span>
-          <span class="stat_number">$450 million +</span>
-        </div>
-        <div class="stat">
-          <span class="stat_title">Aid received by the Government:</span>
-          <span class="stat_number">$7 million</span>
-        </div>
-      </div> 
-      <div>
-        Youtube video.
+  <div class="box hidden" id="create_box">
+    <div class="box-content align_left gray_box">
+      <div class="topsection">
+        <div class="question">Create Your Own Challenge:</div>
       </div>
-      <div>
-        Facebook Pictures
-      </div>
-      <div>
-        Related links
-      </div>
-    </div>
 
+      <legend>
+        Type of Challenge:
+        <input type="radio" name="question_type" value="list">Name things (Example: Name 50 African Countries)  <input type="radio" name="question_type" value="5">Answer 5 questions(Example: 5 questions about Taylor Swift)
+      </legend>
+      <legend>
+        Trivia Question:
+        <input type="text" class="input_form" id="answer_box" autocomplete="off" placeholder="100 Characters Max"></input>
+      </legend>
+      <legend>
+        Correct Answers(enter one at a time):
+        </br>
+        <form id="creation_answers_form">
+          <input type="text" class="input_form" id="creation_answer_box" autocomplete="off"></input>
+          <input type="submit" class="button" value="Add"></input>
+        </form>
+      </legend>
+      <div class="answer_box" id="quiz_creation_answers"></div>
+      <legend>
+        Passing Score:
+        <input type="text" class="input_form" id="answer_box" autocomplete="off"></input>
+      </legend>
+      <legend>
+        Max Time: 200 Seconds
+      </legend>
+      <div id="start_button" class="center_button two_buttons">
+        <input type="submit" class="button red float_left" onclick="cancelcreate()" value="Cancel"></input>
+        <input type="submit" class="button green float_right" onclick="createquiz()" value="Create"></input>
+      </div>
+    </div>
   </div>
 </div>
 </div>

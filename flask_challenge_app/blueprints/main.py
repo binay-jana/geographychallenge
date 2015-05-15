@@ -10,3 +10,6 @@ _logger = Log.getLogger(__name__)
 @main.route('/')
 def index():
     return render_template('trivia.html')
+
+# @main.route('/create_challenge', methods=['POST'])
+#     
