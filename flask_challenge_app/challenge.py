@@ -3,7 +3,8 @@
 import os
 from datetime import datetime
 import hashlib
-
+from initialize_registry import load_registry
+load_registry()
 from flask import Flask, request
 from werkzeug.wsgi import SharedDataMiddleware
 

@@ -3,353 +3,21 @@
 <head>
 <meta charset=utf-8 />
 <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=2.0">
-<meta property="og:title" content="Trivia Challenge for Nepal Earthquake Relief" />
+<meta property="og:title" content="Trivia Challenge {{og_title}}" />
 <meta property="og:type" content="article" />
-<meta property="og:image" content="https://42b93ec2.ngrok.com/static/images/fb_share_pic.jpg" />
-<meta property="og:url" content="https://42b93ec2.ngrok.com/0"/>
+<meta property="og:image" content="http://3eeed0ab.ngrok.com/static/images/fb_share_pic.jpg" />
+<meta property="og:url" content="{{ request.url }}"/>
 <meta property="fb:app_id" content="1673890419499781"/>
-<meta property="og:description" content="Answer 1 simple trivia and challenge your friends to help the victims of 7.8M earthquake in Nepal."/>
-<meta property="og:title" content="Jana Trivia Challenge - A Fundraiser 7.8M earthquake victims in Nepal!"/>
-<title>Trivia Challenge for Nepal Earthquake Relief</title>
+<meta property="og:description" content="A fundraiser for the earthquake victims in Nepal - complete the trivia challenge, challenge 5 others and donate $10 if you loose."/>
+<link rel="shortcut icon" href="/static/images/favicon.ico">
+<title>Trivia Challenge {{og_title}}</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <link href="/static/css/trivia.css" media="all" rel="stylesheet" type="text/css"/>
 <script>
+    var question = {{ question|safe }};
     var correctly_answered = [];
-    var questions = [{
-        time: 250,
-        question_id: 0,
-        total_answers: 30,
-        description: "Name {number} of the Largest 30 Cities in the World",
-        passing_score: 20,
-        answers: {
-            "tokyo": 0,
-            "jakarta": 1,
-            "karachi": 2,
-            "manila": 3,
-            "delhi": 4,
-            "seoul": 5,
-            "shanghai": 6,
-            "beijing": 7,
-            "new york city": 8,
-            "new york": 8,
-            "guangzhou": 9,
-            "sao paulo": 10,
-            "mexico city": 11,
-            "mumbai": 12,
-            "osaka": 13,
-            "lagos": 14,
-            "moscow": 15,
-            "dhaka": 16,
-            "lahore": 17,
-            "los angeles": 18,
-            "bangkok": 19,
-            "kolkata": 20,
-            "buenos aires": 21,
-            "tehran": 22,
-            "istanbul": 23,
-            "shenzhen": 24,
-            "rio de janeiro": 25,
-            "kinshasa": 26,
-            "tianjin": 27,
-            "paris": 28,
-            "lima": 29
-        },
-        'names': [
-            'Tokyo',
-            'Jakarta',
-            'Karachi',
-            'Manila',
-            'Delhi',
-            'Seoul',
-            'Shanghai',
-            'Beijing',
-            'New York City',
-            'Guangzhou',
-            'Sao Paulo',
-            'Mexico City',
-            'Mumbai',
-            'Osaka',
-            'Lagos',
-            'Moscow',
-            'Dhaka',
-            'Lahore',
-            'Los Angeles',
-            'Bangkok',
-            'Kolkata',
-            'Buenos Aires',
-            'Tehran',
-            'Istanbul',
-            'Shenzhen',
-            'Rio de Janeiro',
-            'Kinshasa',
-            'Tianjin',
-            'Paris',
-            'Lima'
-        ]
-    }, {
-        time: 350,
-        question_id: 1,
-        total_answers: 54,
-        description: "Name at least {number} African countries",
-        passing_score: 32,
-        answers: {
-            "algeria": 0,
-            "angola": 1,
-            "benin": 2,
-            "botswana": 3,
-            "burkina faso": 4,
-            "burundi": 5,
-            "cabo verde": 6,
-            "cameroon": 7,
-            "central african republic": 8,
-            "chad": 9,
-            "comoros": 10,
-            "congo democratic republic of the": 12,
-            "democratic republic of the congo": 12,
-            "congo republic of the": 11,
-            "republic of the congo": 11,
-            "cote d'ivoire": 13,
-            "cote d ivoire": 13,
-            "cote divoire": 13,
-            "cote ivoire": 13,
-            "djibouti": 14,
-            "egypt": 15,
-            "equatorial guinea": 16,
-            "eritrea": 17,
-            "ethiopia": 18,
-            "gabon": 19,
-            "gambia": 20,
-            "ghana": 21,
-            "guinea": 22,
-            "guinea bissau": 23,
-            "kenya": 24,
-            "lesotho": 25,
-            "liberia": 26,
-            "libya": 27,
-            "madagascar": 28,
-            "malawi": 29,
-            "mali": 30,
-            "mauritania": 31,
-            "mauritius": 32,
-            "morocco": 33,
-            "mozambique": 34,
-            "namibia": 35,
-            "niger": 36,
-            "nigeria": 37,
-            "rwanda": 38,
-            "sao tome and principe": 39,
-            "senegal": 40,
-            "seychelles": 41,
-            "sierra leone": 42,
-            "somalia": 43,
-            "south africa": 44,
-            "south sudan": 45,
-            "sudan": 46,
-            "swaziland": 47,
-            "tanzania": 48,
-            "togo": 49,
-            "tunisia": 50,
-            "uganda": 51,
-            "zambia": 52,
-            "zimbabwe": 53
-        },
-        'names': [
-            "Algeria",
-            "Angola",
-            "Benin",
-            "Botswana",
-            "Burkina Faso",
-            "Burundi",
-            "Cabo Verde",
-            "Cameroon",
-            "Central African Republic",
-            "Chad",
-            "Comoros",
-            "Congo Republic of the",
-            "Congo Democratic Republic of the",
-            "Cote d'Ivoire",
-            "Djibouti",
-            "Egypt",
-            "Equatorial Guinea",
-            "Eritrea",
-            "Ethiopia",
-            "Gabon",
-            "Gambia",
-            "Ghana",
-            "Guinea",
-            "Guinea Bissau",
-            "Kenya",
-            "Lesotho",
-            "Liberia",
-            "Libya",
-            "Madagascar",
-            "Malawi",
-            "Mali",
-            "Mauritania",
-            "Mauritius",
-            "Morocco",
-            "Mozambique",
-            "Namibia",
-            "Niger",
-            "Nigeria",
-            "Rwanda",
-            "Sao Tome and Principe",
-            "Senegal",
-            "Seychelles",
-            "Sierra Leone",
-            "Somalia",
-            "South Africa",
-            "South Sudan",
-            "Sudan",
-            "Swaziland",
-            "Tanzania",
-            "Togo",
-            "Tunisia",
-            "Uganda",
-            "Zambia",
-            "Zimbabwe"
-        ],
-    }]
-    function getQueryParams(qs) {
-        qs = qs.split("+").join(" ");
-        var params = {}, tokens, re = /[?&]?([^=]+)=([^&]*)/g;
-        while (tokens = re.exec(qs)) {
-            params[decodeURIComponent(tokens[1])]
-                = decodeURIComponent(tokens[2]);
-        }
-        return params;
-    }
-    var params = getQueryParams(window.location.search.substring(1));
-    var variant = 1
-    if (params.fb_ref!=null){
-      var a = params.fb_ref.split(' ')[0];
-      if (!isNaN(a) && parseInt(a) < questions.length && parseInt(a) >= 0) {
-        variant = parseInt(a);
-      }
-    }    
- 
-    console.log(params);
-    console.log(variant);
+    var time = 200;
 </script>
-<style>
-#challenge_box {}
-#error_display {
-  color: red;
-}
-body {
-  z-index: 2;
-}
-h1 {
-  margin: 0px;
-  font-size: 24px;
-}
-#missed_numbers {
-  display: none;
-}
-#missed_answers {
-  display: none;
-}
-#how {
-  font-size: 18px;
-  font-weight: bold;
-}
-
-.steps {
-  width: 100%;
-  text-align: center;
-  font-size: 20px;
-  margin-bottom: 10px;
-  font-weight: bold;
-}
-.answered_item {
-  padding: 2px;
-  padding-right: 5px;
-  padding-left: 5px;
-  text-align: center;
-  background-color: #B5BABA;
-  margin: 3px;
-  float: left;
-}
-.missed_item {
-  padding: 2px;
-  padding-right: 5px;
-  padding-left: 5px;
-  text-align: center;
-  background-color: #E0B3A8;
-  margin: 3px;
-  float: left;
-}
-.signup_form{
-  font-size: 14px;
-  margin: 5px;
-  width:270px;
-  height:20px;
-    border: 1px solid #EBE3DD;
-    background: white;
-}
-.signup_form:hover {
-    border: 1px solid white;
-    background: #CCCCCC;
-}
-span#subscription{ font-size: 12px;
-  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
-  cursor: default;}
-span#rightboxheadline{
-  text-align:center 
-  cursor: default;
-  text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
-  font-size: 25px;
-  color:white;  
-}
-html{
-  height: 100%;
-}
-div#bd {
-  position: absolute;
-    width: 100%;
-    top: 34px;
-    bottom: 0px;
-    border-top: 1px solid #463F3E;
-}
-.container{
-  height: 100%;
-  position: relative;
-}
- 
-
-
-@media screen and (max-width: 600px) {
-    .main-content {
-        z-index: 1;
-        max-width: 801px;
-        margin: 38px auto;
-        background: #fff;
-        padding: 47px 10px 26px;
-        box-sizing: border-box;
-    }
-    input {
-      width: 100%;
-      margin-bottom: 5px;
-    }
-    select {
-      overflow: hidden;
-      font-size: 12px;
-    }
-}
-a {
-  text-decoration:none;
-}
-.error_input {
-  border: 1px solid #cc3300 !important;
-}
-.error_label {
-  color: #cc3300 !important;
-}
-a:hover{
-  color: #0077b5;
-}
-
-</style>
 </head>
 <body>
 <script>
@@ -391,26 +59,34 @@ a:hover{
 
 // async init once loading is done
 window.fbAsyncInit = function() {
-  FB.init({appId: 1673890419499781, status: false});
+  FB.init({
+    appId: 1673890419499781,
+    xfbml: true,
+    version    : 'v2.3'
+  });
 };
 
 var created_correct_answers = {};
 
 window.onload = function() {
-    populate_nomination_challenges();
+    $('#faq').click(function(event) {
+        $('#faq_div').toggle();
+      }
+    );
+    // populate_nomination_challenges();
     $('#access_code_form').submit(function (event) {
         event.preventDefault();
         var answer = $.trim($('input#answer_box').val().toLowerCase());
         var error_string = null;
-        if(questions[variant].answers[answer] != null){
-            var answered_item = questions[variant].answers[answer];
+        if(question.answers[answer] != null){
+            var answered_item = question.answers[answer];
             if ($.inArray(answered_item, correctly_answered)==-1) {
               append_answer(answered_item);
             } else {
-              error_string = "You already entered " + questions[variant].names[answered_item];
+              error_string = "You already entered " + question.names[answered_item];
             }
         } else {
-            error_string = answer + questions[variant].error_message
+            error_string = answer + " is not right answer.";
         }
         if(error_string!=null) {
             append_wrong_answer(answer);
@@ -445,7 +121,7 @@ window.onload = function() {
     function append_answer(answered_item) {
         $('#answer_boxes').show();
         $answer_el = $('<span />');
-        var full_name = questions[variant].names[answered_item];
+        var full_name = question.names[answered_item];
         correctly_answered.push(answered_item);
         $answer_el.addClass("answered_item").text(full_name);
         $('#entered_answers').append($answer_el);
@@ -459,13 +135,6 @@ window.onload = function() {
         $('#entered_answers').append($answer_el);
     }
 
-    function flash(error_string) {
-        $('#error_display').flash_message({
-            text: error_string,
-            how: 'append'
-        });
-    }
-
     function stopChallenge() {
         $('#answer_box').prop('disabled', true);
         $('#submit_button').prop('disabled', true);
@@ -474,22 +143,22 @@ window.onload = function() {
     function timesUp() {
         stopChallenge();
         showAnswers();
-        if(correctly_answered.length==questions[variant].names.length) {
+        if(correctly_answered.length==question.names.length) {
             console.log('YAY');
         } else {
             console.log('BOO');
         }
     }
 
-    function populateQuestion(variant) {
-        $('#number_of_seconds').text(questions[variant].time)
+    function populateQuestion() {
+        $('#number_of_seconds').text(time)
         $('#challenge_prompt').html(
           str_replace(['number'],
-            [questions[variant].passing_score],
-            "Your Challenge: " + questions[variant].description
+            [question.passing_score],
+            "Your Challenge: " + question.prompt
           ));
     }
-    populateQuestion(variant);
+    populateQuestion();
 }
 
 function get_nominated_question() {
@@ -497,14 +166,14 @@ function get_nominated_question() {
 }
 
 function gogogo() {
-    var url = 'http://42b93ec2.ngrok.com/' + get_nominated_question();
+    var url = window.location.href;
     var question = get_nominated_question() + " asdf";
 
     FB.ui({
         method: 'share_open_graph',
-        action_type: 'og.likes',
+        action_type: 'og.shares',
         action_properties: JSON.stringify({
-          object:'http://42b93ec2.ngrok.com',
+          object: window.location.href,
           ref: question + '',
         }),
         href: url
@@ -512,7 +181,7 @@ function gogogo() {
 }
 
 function start_timer() {
-    var time_left = questions[variant].time;
+    var time_left = time;
     function timer() {
         time_left -= 1;
         if (time_left < 0) {
@@ -533,17 +202,17 @@ function str_replace(replaceArray, replaceWith, myString) {
   return myString;
 }
 
-function populate_nomination_challenges() {
-  var options = $('#challenge_selection');
-  $.each(questions, function() {
-    var question_item = str_replace(
-      ['number'],
-      [this.passing_score],
-      this.description
-    );
-    options.append($("<option />").val(this.question_id).text(question_item));
-  });
-}
+// function populate_nomination_challenges() {
+//   var options = $('#challenge_selection');
+//   $.each(questions, function() {
+//     var question_item = str_replace(
+//       ['number'],
+//       [this.passing_score],
+//       this.description
+//     );
+//     options.append($("<option />").val(this.question_id).text(question_item));
+//   });
+// }
 
 function startquiz() {
   $('#answer_form').show();
@@ -553,15 +222,15 @@ function startquiz() {
 }
 
 function populateAnswers() {
-    for (index in questions[variant].names) {
+    for (index in question.names) {
         if($.inArray(parseInt(index), correctly_answered)==-1) {
             $answer_el = $('<span />');
-            var full_name = questions[variant].names[index];
+            var full_name = question.names[index];
             $answer_el.addClass("missed_item").text(full_name);
             $('#final_missed_answers').append($answer_el);
         } else {
             $answer_el = $('<span />');
-            var full_name = questions[variant].names[index];
+            var full_name = question.names[index];
             $answer_el.addClass("answered_item").text(full_name);
             $('#final_entered_answers').append($answer_el);
         }
@@ -571,8 +240,8 @@ function populateAnswers() {
 
 function showResults() {
   var result_header = "Congratulations, you passed the Challenge";
-  if (correctly_answered.length < questions[variant].passing_score) {
-    result_header = "You needed " + questions[variant].passing_score + " to pass.. you only got " + correctly_answered.length;
+  if (correctly_answered.length < question.passing_score) {
+    result_header = "You needed " + question.passing_score + " to pass.. you only got " + correctly_answered.length;
   }
   populateAnswers();
   $('#challenge_prompt').text(result_header);
@@ -593,23 +262,78 @@ function cancelcreate() {
   $('#create_box').hide(); 
   $("html, body").animate({ scrollTop: $(document).height() }, "fast");
 }
+
+function createquiz() {
+  var is_name_things = $('input:radio[name=question_type]:checked').val() == "list";
+  var prompt = $('#created_list_question').val();
+  var passing_score = 0;
+  var question_answer_sets = [];
+  if (is_name_things) {
+    passing_score = $('#passing_score').val();
+  } else {
+    question_answer_sets = [];
+  }
+  var to_send = {
+    'passing_score': passing_score,
+    'prompt': prompt,
+    'is_name_things': is_name_things,
+    'question_answer_sets': [],
+    'correct_names': created_correct_answers
+  }
+  $.ajax({
+    url: 'create_challenge',
+    data: JSON.stringify(to_send),
+    type: "POST",
+    success: function(data) {
+      window.open("/" + data['question_id'] + '?just_now=1', "_self");
+    },
+    error: function(jqXHR, textStatus, errorThrown) {
+      console.log(errorThrown);
+    },
+    contentType : 'application/json',
+    dataType: "json"
+  });
+}
+
 </script>
-<div class="map-overlay">
 <div class="top-header">
+    <div class="align_center toppadding300">
+        <a class="button transparent" href="https://www.gofundme.com/nepalvillagers/donate" target="_blank">Click Here to Make a Donation!</a>
+    </div>
 </div>
+<div class="map-overlay">
 <div class="main-content">
   <div class="title">
     Trivia Challenge
   </div>
   <div class="subtitle">
-    A fundraiser for the Nepali Earthquake victims organized by <a class="more_link" id="about_jana" href="https://jana.com" target="_blank"><img src="/static/images/jana_logo.png" width="90px" style="position:relative;  top: 7px;"></a>
+    A fundraiser for the Nepali Earthquake victims organized by<a class="more_link" id="about_jana" href="https://jana.com" target="_blank"><img src="/static/images/jana_logo.png" width="90px" style="position:relative;  top: 7px;"></a><span class="more_link" id="faq">(FAQs)</span>
+  </div>
+  <div class="subtitle" id="faq_div">
+    <div class="faq_item">
+      <div class="faq_question">How is my donation going to be used?</div>
+      <div class="faq_answer">Jana is going to hand over the collected donations to the <a href="http://pmrelief.opmcm.gov.np/about.aspx" target="_blank">Nepali Prime Minister Disaster Relief Fund</a> and the <a href="http://www.unicef.org/infobycountry/nepal.html" target="_blank">UNICEF</a>. These organizations have been helping the victims of the earthquake since the very first day after the earthquake. Both of these organizations are transparent and well regulated.</div>
+    </div>
+    <div class="faq_item">
+      <div class="faq_question">What is Jana? Why is the company organizing this fundraiser?</div>
+      <div class="faq_answer">We are a for-profit internet startup based in Boston, USA. You can <a href="http://www.jana.com" target="_blank">read about us here</a>. Our engineers came up with the idea for the fundraiser and the team implemented it during our quaterly hackathon day. While this fundraiser is not part of our business, we are happy to be able to organize the fundraiser to raise the awareness and support for the millions affected by the disaster.</div>
+    </div>
+    <div class="faq_item">
+      <div class="faq_question">Who created the trivia questions?</div>
+      <div class="faq_answer">The questions are user generated. You too can create your own challenge. Just avoid profane and/or offensive content. Use your moral judgement.</div>
+    </div>
+    <div class="faq_item">
+      <div class="faq_question">I cannot donate. How can I help?</div>
+      <div class="faq_answer">It is okey if you cannnot donate. You can still help us by challenging your friends and creating new trivias.</div>
+    </div>
+    <div class="faq_item">
+      <div class="faq_question">I do not know what kind of trivia questions are interesting. Do you have any suggestions?</div>
+      <div class="faq_answer">Think about the topics your friends care about. It could be about your highschool, sports, players, actors, movies, or about you.</div>
+    </div>
   </div>
   <div class="box">
-<!--     <div class="box-content align_left description_text some_space_below">
-      The 2015 Nepal earthquake killed more than 8,000 people in the country. More than 300,000 houses were completely destroyed and hundreds of villages were completely flattened across the country. Reconstruction will take years.
-    </div> -->
     <div class="box-content align_left description_text some_space_below">
-      The goal of this challenge is to raise money for the Nepali Government's Earthquake Relief Fund with a simple game. Your friend has selected a challenge for you. Just try the challenge, and if you do not pass, donate $15 to our fundraising campaign. Complete the challenge by challenging 5 other friends!
+      The goal of this challenge is to raise money for the UNICEF & the Nepali Government's Earthquake Relief Fund with a simple game. Your friend has selected a challenge for you. Just try the challenge, and if you do not pass, donate $10 to our fundraising campaign. Complete the challenge by challenging 5 other friends!
     </div>
   </div>
   <div class="box" id="challenge_box">
@@ -620,9 +344,7 @@ function cancelcreate() {
       </div>
       <div class="answer-form" id="answer_form">
         <form id="access_code_form">
-            <label>
-                <input type="text" class="input_form" id="answer_box" autocomplete="off"></input>
-            </label>
+            <input type="text" class="input_form" id="answer_box" autocomplete="off"></input>
             <input type="submit" class="button submit-button" id="submit_button" value="Submit"/><span class="note-text">(<span id="time_left">26</span> seconds left)</span>
         </form>
         <div class="answer_boxes" id="answer_boxes">
@@ -640,7 +362,7 @@ function cancelcreate() {
           <div class="answer_box" id="final_missed_answers"></div>
         </div>
         <div class="align_center toppadding25">
-            <a class="button" href="https://life.indiegogo.com/fundraisers/nepal-earthquake-relief-fund" target="_blank">Click here to make a donation now</a>
+            <a class="button" href="https://life.indiegogo.com/fundraisers/nepal-earthquake-relief-fund" target="_blank">Click here to make a donation</a>
         </div>
       </div>
     </div>
@@ -668,40 +390,63 @@ function cancelcreate() {
   </div>
   <div class="box hidden" id="create_box">
     <div class="box-content align_left gray_box">
-      <div class="topsection">
+      <div class="topsection small-padding-bottom">
         <div class="question">Create Your Own Challenge:</div>
       </div>
-
-      <legend>
-        Type of Challenge:
-        <input type="radio" name="question_type" value="list">Name things (Example: Name 50 African Countries)  <input type="radio" name="question_type" value="5">Answer 5 questions(Example: 5 questions about Taylor Swift)
-      </legend>
-      <legend>
-        Trivia Question:
-        <input type="text" class="input_form" id="answer_box" autocomplete="off" placeholder="100 Characters Max"></input>
-      </legend>
-      <legend>
-        Correct Answers(enter one at a time):
-        </br>
-        <form id="creation_answers_form">
-          <input type="text" class="input_form" id="creation_answer_box" autocomplete="off"></input>
-          <input type="submit" class="button" value="Add"></input>
-        </form>
-      </legend>
-      <div class="answer_box" id="quiz_creation_answers"></div>
-      <legend>
-        Passing Score:
-        <input type="text" class="input_form" id="answer_box" autocomplete="off"></input>
-      </legend>
-      <legend>
-        Max Time: 200 Seconds
-      </legend>
+      <div class="creation_item">
+        <div class="creation_legend">Type of Challenge:</div>
+        <div class="creation_input">
+          <label>
+            <input type="radio" name="question_type" value="list" checked>Name things <span class="note-text italic_text">(Example: Name 50 African Countries)</span>
+          </label>
+        </div>
+        <div class="creation_input">
+          <label>
+            <input type="radio" name="question_type" value="5">Answer 5 questions <span class="note-text italic_text">(Example: 5 questions about Taylor Swift)</span>
+          </label>
+        </div>
+      </div>
+      <div class="creation_item">
+        <div class="creation_legend">The Challenge:</div>
+        <div class="note-text italic_text">Give an one-liner description. For example: "Name 8 Princeton eating clubs"</div>
+        <div class="creation_input">
+          <input type="text" class="creation_box input_form" id="created_list_question" autocomplete="off" placeholder="150 Characters Max"/>
+        </div>
+      </div>
+      <div class="creation_item">
+        <div class="creation_legend">Correct Answers:</div>
+        <div class="note-text italic_text">Enter one at a time. Click "Add" or press enter..</div>
+        <div class="creation_input">
+          <form id="creation_answers_form">
+            <input type="text" class="creation_box input_form" id="creation_answer_box" autocomplete="off"/>
+            <input type="submit" class="button" value="Add"></input>
+          </form>
+        </div>
+        <div class="creation_item">
+          <div class="answer_box" id="quiz_creation_answers"></div>
+        </div>
+      </div>
+      <div class="creation_item">
+        <div class="creation_legend">Passing Score:</div>
+        <div class="note-text italic_text">Minimum number of correct answers to pass the challenge</div>
+        <div class="creation_input">
+          <input type="number" class="creation_box input_form" id="passing_score" autocomplete="off"/>
+        </div>
+      </div>
       <div id="start_button" class="center_button two_buttons">
         <input type="submit" class="button red float_left" onclick="cancelcreate()" value="Cancel"></input>
         <input type="submit" class="button green float_right" onclick="createquiz()" value="Create"></input>
       </div>
     </div>
   </div>
+<!--   <div class="center_button">
+          <div
+            class="fb-like"
+            data-share="false"
+            data-width="450"
+            data-show-faces="false">
+          </div>
+  </div> -->
 </div>
 </div>
 </body>
