@@ -30,25 +30,23 @@ class Questions(object):
         )
 
     @classmethod
-    def store(cls, is_name_things, title, prompt, passing_score,
-              correct_names, question_answer_set):
-        query = """INSERT INTO questions(is_name_things, prompt,
-            passing_score, correct_names, question_answer_set)
+    def store(cls, name, prompt, passing_score,
+              correct_names):
+        query = """INSERT INTO questions(name, prompt,
+            passing_score, correct_names)
          VALUES (
-            %(is_name_things)s,
+            %(name)s,
             %(prompt)s,
             %(passing_score)s,
-            %(correct_names)s,
-            %(question_answer_set)s
+            %(correct_names)s
         );"""
         row_id = r.get_registry()['MY_SQL'].insert(
             query,
             {
-                'is_name_things': 1 if is_name_things else 0,
+                'name': name,
                 'prompt': prompt,
                 'passing_score': passing_score,
-                'correct_names': ujson.dumps(correct_names),
-                'question_answer_set': ujson.dumps(question_answer_set)
+                'correct_names': ujson.dumps(correct_names)
             }
         )
         return row_id

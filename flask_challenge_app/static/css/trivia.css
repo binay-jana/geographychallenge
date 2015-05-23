@@ -280,6 +280,12 @@ a.button:hover {
 .button:hover {
     background-color: #4054cb;
 }
+.button:disabled {
+  background-color: #B1BCF9;
+}
+.red:disabled {
+  background-color: #E7A084;
+}
 .transparent {
     background-color: rgba(0,0,0,0.8);
     border: 1px solid #ddd;

@@ -8,16 +8,13 @@ def run():
     r.get_registry()['MY_SQL'].query(
         """CREATE TABLE questions(
             id INT PRIMARY KEY AUTO_INCREMENT,
-            is_name_things INT,
-            title VARCHAR(255),
+            name VARCHAR(255),
             prompt VARCHAR(255),
             passing_score INT,
             correct_names LONGTEXT,
-            question_answer_set LONGTEXT,
             finalized INT DEFAULT 1,
-            author VARCHAR(255),
             active INT DEFAULT 1,
-            total INT DEFAULT 0,
+            total INT DEFAULT 0
         )"""
     )
 

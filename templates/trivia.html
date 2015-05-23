@@ -21,6 +21,7 @@
 </head>
 <body>
 <script>
+var counter;
 (function($) {
     $.fn.flash_message = function(options) {
       options = $.extend({
@@ -118,6 +119,11 @@ window.onload = function() {
         
     });
 
+    $('#giveup').click(function(e) {
+      clearInterval(counter);
+      showResults();
+    })
+
     function append_answer(answered_item) {
         $('#answer_boxes').show();
         $answer_el = $('<span />');
@@ -192,7 +198,7 @@ function start_timer() {
         $('#time_left').text(time_left);
     }
     $('#time_left').text(time_left);
-    var counter = setInterval(timer, 1000);
+    counter = setInterval(timer, 1000);
 }
 
 function str_replace(replaceArray, replaceWith, myString) {
@@ -220,6 +226,7 @@ function startquiz() {
   $('#donation_button').hide();
   start_timer();
 }
+
 
 function populateAnswers() {
     for (index in question.names) {
@@ -264,28 +271,25 @@ function cancelcreate() {
 }
 
 function createquiz() {
-  var is_name_things = $('input:radio[name=question_type]:checked').val() == "list";
+  $('#submit_create').prop('disabled', true);
+  $('#cancel_create').prop('disabled', true); 
+  var name = $('#name').val();
   var prompt = $('#created_list_question').val();
-  var passing_score = 0;
   var question_answer_sets = [];
-  if (is_name_things) {
-    passing_score = $('#passing_score').val();
-  } else {
-    question_answer_sets = [];
-  }
+  var passing_score = $('#passing_score').val();
   var to_send = {
+    'name': name,
     'passing_score': passing_score,
     'prompt': prompt,
-    'is_name_things': is_name_things,
-    'question_answer_sets': [],
     'correct_names': created_correct_answers
   }
+  console.log(to_send);
   $.ajax({
     url: 'create_challenge',
     data: JSON.stringify(to_send),
     type: "POST",
     success: function(data) {
-      window.open("/" + data['question_id'] + '?just_now=1', "_self");
+      window.open("/" + data['question_id'], "_self");
     },
     error: function(jqXHR, textStatus, errorThrown) {
       console.log(errorThrown);
@@ -316,7 +320,7 @@ function createquiz() {
     </div>
     <div class="faq_item">
       <div class="faq_question">What is Jana? Why is the company organizing this fundraiser?</div>
-      <div class="faq_answer">We are a for-profit internet startup based in Boston, USA. You can <a href="http://www.jana.com" target="_blank">read about us here</a>. Our engineers came up with the idea for the fundraiser and the team implemented it during our quaterly hackathon day. While this fundraiser is not part of our business, we are happy to be able to organize the fundraiser to raise the awareness and support for the millions affected by the disaster.</div>
+      <div class="faq_answer">We are a for-profit internet startup based in Boston, USA. You can <a href="http://www.jana.com" target="_blank">read about us here</a>. Our engineers came up with the idea for the fundraiser and the team implemented it during our quaterly hackathon day. While this fundraiser is not part of our business, we are happy to be able to organize the fundraiser to raise awareness and support for the millions affected by the disaster.</div>
     </div>
     <div class="faq_item">
       <div class="faq_question">Who created the trivia questions?</div>
@@ -345,10 +349,10 @@ function createquiz() {
       <div class="answer-form" id="answer_form">
         <form id="access_code_form">
             <input type="text" class="input_form" id="answer_box" autocomplete="off"></input>
-            <input type="submit" class="button submit-button" id="submit_button" value="Submit"/><span class="note-text">(<span id="time_left">26</span> seconds left)</span>
+            <input type="submit" class="button submit-button" id="submit_button" value="Submit"/><span class="note-text">(<span id="time_left">x</span> seconds left)</span>
         </form>
         <div class="answer_boxes" id="answer_boxes">
-          <div class="answer_box" id="entered_answers"></div>
+          <div class="answer_box" id="entered_answers"><span class="more_link" id="giveup">Give Up?</span></div>
         </div>
       </div>
       <div id="start_button" class="center_button toppadding25">
@@ -362,7 +366,7 @@ function createquiz() {
           <div class="answer_box" id="final_missed_answers"></div>
         </div>
         <div class="align_center toppadding25">
-            <a class="button" href="https://life.indiegogo.com/fundraisers/nepal-earthquake-relief-fund" target="_blank">Click here to make a donation</a>
+            <a class="button" href="https://www.gofundme.com/nepalvillagers/donate" target="_blank">Click here to make a donation</a>
         </div>
       </div>
     </div>
@@ -394,21 +398,15 @@ function createquiz() {
         <div class="question">Create Your Own Challenge:</div>
       </div>
       <div class="creation_item">
-        <div class="creation_legend">Type of Challenge:</div>
+        <div class="creation_legend">Your First Name/Nickname:</div>
+        <div class="note-text italic_text">Leave blank if you want to remain anonymous</div>
         <div class="creation_input">
-          <label>
-            <input type="radio" name="question_type" value="list" checked>Name things <span class="note-text italic_text">(Example: Name 50 African Countries)</span>
-          </label>
-        </div>
-        <div class="creation_input">
-          <label>
-            <input type="radio" name="question_type" value="5">Answer 5 questions <span class="note-text italic_text">(Example: 5 questions about Taylor Swift)</span>
-          </label>
+          <input type="text" class="creation_box input_form" id="name" autocomplete="off" placeholder="150 Characters Max"/>
         </div>
       </div>
       <div class="creation_item">
         <div class="creation_legend">The Challenge:</div>
-        <div class="note-text italic_text">Give an one-liner description. For example: "Name 8 Princeton eating clubs"</div>
+        <div class="note-text italic_text">Give an one-liner description. For example: "Name at least 10 teams that have won superbowl"</div>
         <div class="creation_input">
           <input type="text" class="creation_box input_form" id="created_list_question" autocomplete="off" placeholder="150 Characters Max"/>
         </div>
@@ -434,8 +432,8 @@ function createquiz() {
         </div>
       </div>
       <div id="start_button" class="center_button two_buttons">
-        <input type="submit" class="button red float_left" onclick="cancelcreate()" value="Cancel"></input>
-        <input type="submit" class="button green float_right" onclick="createquiz()" value="Create"></input>
+        <input type="submit" id="cancel_create" class="button red float_left" onclick="cancelcreate()" value="Cancel"></input>
+        <input type="submit" id="submit_create" class="button green float_right" onclick="createquiz()" value="Create"></input>
       </div>
     </div>
   </div>

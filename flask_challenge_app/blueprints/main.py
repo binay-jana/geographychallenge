@@ -44,20 +44,19 @@ def get_challenge(qid=None):
                            request=request)
 
 
+@main.route('/<qid>/create_challenge', methods=['POST'])
 @main.route('/create_challenge', methods=['POST'])
-def create():
+def create(qid):
     params = request.json
-    is_name_things = params.get('is_name_things')
+    name = params.get('name') or 'anonymous'
     prompt = params.get('prompt')
     correct_names = params.get('correct_names') or []
     passing_score = params.get('passing_score') or len(correct_names)
-    question_answer_sets = params.get('question_answer_sets') or []
     question_id = r.get_registry()['QUESTIONS'].store(
-        is_name_things,
+        cgi.escape(name),
         cgi.escape(prompt),
         passing_score,
-        correct_names,
-        question_answer_sets
+        [cgi.escape(n) for n in correct_names],
     )
     return jsonify({
         'question_id': question_id

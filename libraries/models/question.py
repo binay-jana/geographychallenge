@@ -11,7 +11,7 @@ class Question(object):
         correct_names = ujson.loads(self.correct_names)
         return {
             'total_answers': len(correct_names),
-            'is_name_things': self.is_name_things,
+            'name': self.name,
             'prompt': self.prompt,
             'passing_score': self.passing_score,
             'answers': {v: i for i, v in enumerate(correct_names)},
