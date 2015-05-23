@@ -1,5 +1,7 @@
 # geographychallenge
 Setup:
+- sudo apt-get install python-dev
+sudo apt-get install libmysqlclient-dev
 - pip install virtualenv
 - Start a virtualenv directory in home directory
     virtualenv challenge

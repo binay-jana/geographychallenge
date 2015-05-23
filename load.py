@@ -5,6 +5,7 @@ import registry as r
 def run():
     # grant all privileges on *.* to trivia_challenge@localhost identified by '9a7123w4982ew3490x23pl34bz' with grant option; # NOQA
     load_registry()
+    r.get_registry()['MY_SQL'].query('CREATE DATABASE challenge;')
     r.get_registry()['MY_SQL'].query(
         """CREATE TABLE questions(
             id INT PRIMARY KEY AUTO_INCREMENT,
