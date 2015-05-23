@@ -1,0 +1,30 @@
+    function getQueryParams(qs) {
+        qs = qs.split("+").join(" ");
+        var params = {}, tokens, re = /[?&]?([^=]+)=([^&]*)/g;
+        while (tokens = re.exec(qs)) {
+            params[decodeURIComponent(tokens[1])]
+                = decodeURIComponent(tokens[2]);
+        }
+        return params;
+    }
+    var params = getQueryParams(window.location.search.substring(1));
+    var variant = 1
+    if (params.fb_ref!=null){
+      var a = params.fb_ref.split(' ')[0];
+      if (!isNaN(a) && parseInt(a) < questions.length && parseInt(a) >= 0) {
+        variant = parseInt(a);
+      }
+    }
+      <div class="creation_item">
+        <div class="creation_legend">Type of Challenge:</div>
+        <div class="creation_input">
+          <label>
+            <input type="radio" name="question_type" value="list" checked>Name things <span class="note-text italic_text">(Example: Name 50 African Countries)</span>
+          </label>
+        </div>
+        <div class="creation_input">
+          <label>
+            <input type="radio" name="question_type" value="5">Answer 5 questions <span class="note-text italic_text">(Example: 5 questions about Taylor Swift)</span>
+          </label>
+        </div>
+      </div>
