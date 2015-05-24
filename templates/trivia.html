@@ -185,14 +185,16 @@ function get_nominated_question() {
 
 function gogogo() {
     var url = window.location.href;
-    var question = get_nominated_question();
-
+    var q = get_nominated_question();
+    if (q!=="default") {
+      url = 'http://' + window.location.host + '/' + q;
+    }
     FB.ui({
         method: 'share_open_graph',
         action_type: 'og.shares',
         action_properties: JSON.stringify({
-          object: window.location.href + '/' + question,
-          ref: question,
+          object: url,
+          ref: q,
         }),
         href: url
     });
@@ -297,7 +299,6 @@ function createquiz() {
     'prompt': prompt,
     'correct_names': created_correct_answers
   }
-  console.log(to_send);
   $.ajax({
     url: 'create_challenge',
     data: JSON.stringify(to_send),
