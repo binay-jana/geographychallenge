@@ -27,9 +27,11 @@ def get_question(question_id):
 @main.route('/<qid>/')
 def get_challenge(qid=None):
     question = None
+    referral_choices = [(i, q['prompt']) for i, q in enumerate(QUESTIONS)]
     if qid and qid.isdigit():
         if int(qid) >= len(QUESTIONS):
             question = get_question(qid)
+            referral_choices.insert(0, (qid, question['prompt']))
         else:
             question = QUESTIONS[int(qid)]
     if not question:
@@ -38,8 +40,10 @@ def get_challenge(qid=None):
         og_title = "for Nepal Earthquake Relief"
     else:
         og_title = ": " + question['prompt']
+
     return render_template('trivia.html',
                            question=ujson.dumps(question),
+                           referral_choices=referral_choices,
                            og_title=og_title,
                            request=request)
 

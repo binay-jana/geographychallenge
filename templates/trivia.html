@@ -74,7 +74,18 @@ window.onload = function() {
         $('#faq_div').toggle();
       }
     );
-    // populate_nomination_challenges();
+
+    $('input#answer_box').bind("change paste keyup", function() {
+        var answer = $.trim($('input#answer_box').val().toLowerCase());
+        if(question.answers[answer] != null){
+          var answered_item = question.answers[answer];
+          if ($.inArray(answered_item, correctly_answered)==-1) {
+            append_answer(answered_item);
+            $('input#answer_box').val('');
+          }
+        }
+    });
+
     $('#access_code_form').submit(function (event) {
         event.preventDefault();
         var answer = $.trim($('input#answer_box').val().toLowerCase());
@@ -89,11 +100,10 @@ window.onload = function() {
         } else {
             error_string = answer + " is not right answer.";
         }
-        if(error_string!=null) {
+        if(error_string!=null && answer) {
             append_wrong_answer(answer);
         }
-        $('input#answer_box').val('');
-        
+        $('input#answer_box').val('');        
         return false;
     });
 
@@ -116,7 +126,6 @@ window.onload = function() {
         });
         $answer_el.append($cross)
         $('#quiz_creation_answers').append($answer_el);
-        
     });
 
     $('#giveup').click(function(e) {
@@ -129,6 +138,7 @@ window.onload = function() {
         $answer_el = $('<span />');
         var full_name = question.names[answered_item];
         correctly_answered.push(answered_item);
+        $('#scored_points').text(correctly_answered.length);
         $answer_el.addClass("answered_item").text(full_name);
         $('#entered_answers').append($answer_el);
     }
@@ -163,6 +173,8 @@ window.onload = function() {
             [question.passing_score],
             "Your Challenge: " + question.prompt
           ));
+        $('#scored_points').text(0);
+        $('#required_points').text(question.passing_score);
     }
     populateQuestion();
 }
@@ -173,14 +185,14 @@ function get_nominated_question() {
 
 function gogogo() {
     var url = window.location.href;
-    var question = get_nominated_question() + " asdf";
+    var question = get_nominated_question();
 
     FB.ui({
         method: 'share_open_graph',
         action_type: 'og.shares',
         action_properties: JSON.stringify({
-          object: window.location.href,
-          ref: question + '',
+          object: window.location.href + '/' + question,
+          ref: question,
         }),
         href: url
     });
@@ -249,6 +261,8 @@ function showResults() {
   var result_header = "Congratulations, you passed the Challenge";
   if (correctly_answered.length < question.passing_score) {
     result_header = "You needed " + question.passing_score + " to pass.. you only got " + correctly_answered.length;
+  } else {
+    result_header = "Congratulations you passed. Challenge your friends next."
   }
   populateAnswers();
   $('#challenge_prompt').text(result_header);
@@ -351,7 +365,7 @@ function createquiz() {
             <input type="text" class="input_form quiz_box" id="answer_box" autocomplete="off"></input>
             (<span id="time_left">x</span> seconds left)</span>
         </form>
-        <div class="note-text italic_text" id='challege_subtext'>Your Score: 0 / Passing Score: 32<span class="more_link" id="giveup">Give Up?</span></div>
+        <div class="note-text italic_text" id='challege_subtext'>Your Score: <span id="scored_points">0</span> / Passing Score: <span id="required_points">32</span><span class="more_link" id="giveup">Give Up?</span></div>
         <div class="answer_boxes" id="answer_boxes">
           <div class="answer_box" id="entered_answers"></div>
         </div>
@@ -366,9 +380,6 @@ function createquiz() {
           You missed:
           <div class="answer_box" id="final_missed_answers"></div>
         </div>
-        <div class="align_center toppadding25">
-            <a class="button" href="https://www.gofundme.com/nepalvillagers/donate" target="_blank">Click here to make a donation</a>
-        </div>
       </div>
     </div>
   </div>
@@ -381,6 +392,9 @@ function createquiz() {
         <div>
           <select class="nomination_input" id="challenge_selection">
             <option value="default">Select an existing challenge for your friends</option>
+            {% for item in referral_choices %}
+              <option value={{item[0]}}>{{item[1]}}</option>
+            {% endfor %}
           </select>
         </div>
         <div>
@@ -402,14 +416,14 @@ function createquiz() {
         <div class="creation_legend">Your First Name/Nickname:</div>
         <div class="note-text italic_text">Leave blank if you want to remain anonymous</div>
         <div class="creation_input">
-          <input type="text" class="creation_box input_form" id="name" autocomplete="off" placeholder="150 Characters Max"/>
+          <input type="text" class="creation_box input_form" id="name" autocomplete="off" placeholder="250 Characters Max"/>
         </div>
       </div>
       <div class="creation_item">
         <div class="creation_legend">The Challenge:</div>
         <div class="note-text italic_text">Give an one-liner description. For example: "List any 30 of your classmates in St.Xaviers IIE, class of 2006."</div>
         <div class="creation_input">
-          <input type="text" class="creation_box input_form" id="created_list_question" autocomplete="off" placeholder="150 Characters Max"/>
+          <input type="text" class="creation_box input_form" id="created_list_question" autocomplete="off" placeholder="250 Characters Max"/>
         </div>
       </div>
       <div class="creation_item">
