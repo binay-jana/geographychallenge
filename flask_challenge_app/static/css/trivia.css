@@ -299,11 +299,11 @@ a.button:hover {
   color: #fff !important;
   font-weight: 300;
 }
-.quiz_box {
-    width: 40%;  
-}
 .creation_box {
   width: 70%;
+}
+.quiz_box {
+  width: 50%;
 }
 .input_form {
     margin-right: 10px;
