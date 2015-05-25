@@ -100,7 +100,7 @@ a {
   color: #cc3300 !important;
 }
 a:hover{
-  color: #0077b5;
+  color: #3046C5;
 }
 .navbar {
     margin-bottom: 0;
@@ -188,7 +188,7 @@ ul {
 }
 
 a {
-    color: #CE4511;
+    color: #5065DF;
     text-decoration: none;
 }
 html {
@@ -345,6 +345,11 @@ select {
     background: #5065df  url("/static/images/f.png") no-repeat 52px 10px;
 }
 
+.created-facebook-button {
+    width: 300px;
+    background: #5065df  url("/static/images/f.png") no-repeat 30px 10px;  
+}
+
 .box-header-name {
     padding: 5px 20px;
     background-color: #c94429;
@@ -415,6 +420,7 @@ select {
 }
 .postscript-text {
     margin-top: 10px;
+    margin-bottom: 10px;
     color: #666;
     font-size: 20px;
     font-weight: 200;
@@ -436,6 +442,11 @@ select {
 }
 .giveup:hover {
     text-decoration: underline;
+}
+.post_question_creation {
+  display: none;
+  text-align: center;
+  padding: 20px;
 }
 
 .note-text {
@@ -546,7 +557,7 @@ label.nomination {
     border-radius: 4px;
 }
 .top-header {
-    background-image: url(http://samenwerkendehulporganisaties.nl/wp-content/uploads/2015/04/home_nepal.jpg);
+    background-image: url(/static/images/background.jpg);
     background-position: center;
     background-repeat: no-repeat;
     background-color: #000000;

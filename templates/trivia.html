@@ -17,6 +17,7 @@
     var question = {{ question|safe }};
     var correctly_answered = [];
     var time = 200;
+    var created_qid = null;
 </script>
 </head>
 <body>
@@ -191,6 +192,17 @@ function gogogo() {
     } else {
       url = window.location.href;
     }
+    showFacebookUI(url);
+}
+
+function showCreatedQIDShare() {
+  if(created_qid!==null) {
+    return showFacebookUI('http://' + window.location.host + '/' + created_qid);
+  }
+  return gogogo();
+}
+
+function showFacebookUI(url){
     FB.ui({
         method: 'share_open_graph',
         action_type: 'janatriviachallenge:challenge',
@@ -289,7 +301,9 @@ function cancelcreate() {
 
 function createquiz() {
   $('#submit_create').prop('disabled', true);
-  $('#cancel_create').prop('disabled', true); 
+  $('#cancel_create').prop('disabled', true);
+  $('#creation_form').hide();
+  $('#question_creation_loading').show();
   var name = $('#name').val();
   var prompt = $('#created_list_question').val();
   var question_answer_sets = [];
@@ -301,18 +315,40 @@ function createquiz() {
     'correct_names': created_correct_answers
   }
   $.ajax({
-    url: 'create_challenge',
-    data: JSON.stringify(to_send),
-    type: "POST",
-    success: function(data) {
-      window.open("/" + data['question_id'], "_self");
-    },
-    error: function(jqXHR, textStatus, errorThrown) {
-      console.log(errorThrown);
-    },
-    contentType : 'application/json',
-    dataType: "json"
+      url: 'create_challenge',
+      data: JSON.stringify(to_send),
+      type: "POST",
+      success: function(data) {
+          created_qid = data['question_id'];
+          afterCreationSuccess();
+      },
+      error: function(jqXHR, textStatus, errorThrown) {
+          afterCreation();
+      },
+      contentType : 'application/json',
+      dataType: "json"
   });
+}
+
+function getCreatedURL() {
+  return 'http://' + window.location.host + '/' + created_qid;
+}
+function afterCreationSuccess() {
+  $('#submit_create').hide();
+  $('#cancel_create').hide();
+  $('#question_creation_loading').hide();
+  $('#share_created_question').show();
+  var url = getCreatedURL();
+  var $link = $('<a></a>');
+  $link.prop('href', url);
+  $link.text(url);
+  $('#created_question_link').html($link);
+}
+function afterCreationFailure() {
+  $('#submit_create').prop('disabled', false);
+  $('#cancel_create').prop('disabled', false);
+  $('#creation_form').show();
+  $('#question_creation_loading').hide();
 }
 
 </script>
@@ -411,7 +447,7 @@ function createquiz() {
   </div>
   <div class="box hidden" id="create_box">
     <div class="box-content align_left gray_box">
-      <div class="creation_form">
+      <div id="creation_form">
         <div class="topsection small-padding-bottom">
           <div class="question">Create Your Own Challenge:</div>
         </div>
@@ -449,10 +485,19 @@ function createquiz() {
             <input type="number" class="creation_box input_form" id="passing_score" autocomplete="off"/>
           </div>
         </div>
-        <div id="start_button" class="center_button two_buttons">
-          <input type="submit" id="cancel_create" class="button red float_left" onclick="cancelcreate()" value="Cancel"></input>
-          <input type="submit" id="submit_create" class="button green float_right" onclick="createquiz()" value="Create"></input>
-        </div>
+      </div>
+      <div id="question_creation_loading" class="post_question_creation">
+        <img src="/static/images/712.gif">
+      </div>
+      <div id="share_created_question" class="post_question_creation">
+        <div class="postscript-text" id="creation_result">Success! Your Trivia was just created!</div>
+        <div onclick="showCreatedQIDShare()" class="created-facebook-button button">Challenge friends with your trivia!</div>
+        <div class="postscript-text">Or</div>
+        <div class="postscript-text">Share this link: <span class="link-text link" id="created_question_link"></span></div>
+      </div>
+      <div id="start_button" class="center_button two_buttons">
+        <input type="submit" id="cancel_create" class="button red float_left" onclick="cancelcreate()" value="Cancel"></input>
+        <input type="submit" id="submit_create" class="button green float_right" onclick="createquiz()" value="Create"></input>
       </div>
     </div>
   </div>
