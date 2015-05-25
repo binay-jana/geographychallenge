@@ -20,6 +20,8 @@ def get_question(question_id):
     if not question_id:
         return None
     question = r.get_registry()['QUESTIONS'].get(question_id)
+    if not question:
+        return None
     return question.flatten()
 
 

@@ -142,6 +142,10 @@ window.onload = function() {
         $('#scored_points').text(correctly_answered.length);
         $answer_el.addClass("answered_item").text(full_name);
         $('#entered_answers').append($answer_el);
+        if (correctly_answered.length==question.names.length) {
+          clearInterval(counter);
+          showResults();
+        }
     }
 
     function append_wrong_answer(answered_item) {
@@ -428,10 +432,6 @@ function afterCreationFailure() {
       </div>
       <div class="nomination-form">
         <div>
-          <div onclick="load_create()" class="create_own button">Create your own Trivia!</div>
-        </div>
-        <div class="postscript-text">Or</div>
-        <div>
           <select class="nomination_input" id="challenge_selection">
             <option value="default">Select an existing challenge for your friends</option>
             {% for item in referral_choices %}
@@ -441,6 +441,10 @@ function afterCreationFailure() {
         </div>
         <div>
           <div onclick="gogogo()" class="facebook-button button">Challenge</div>
+        </div>
+        <div class="postscript-text">Or</div>
+        <div>
+          <div onclick="load_create()" class="create_own button">Create your own Trivia!</div>
         </div>
       </div>
     </div>
