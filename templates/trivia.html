@@ -336,7 +336,7 @@ function createquiz() {
     </div>
     <div class="faq_item">
       <div class="faq_question">What is Jana? Why is the company organizing this fundraiser?</div>
-      <div class="faq_answer">We are a for-profit internet startup based in Boston, USA. You can <a href="http://www.jana.com" target="_blank">read about us here</a>. Our engineers came up with the idea for the fundraiser and the team implemented it during our quaterly hackathon day. While this fundraiser is not part of our business, we are happy to be able to organize the fundraiser to raise awareness and support for the millions affected by the disaster.</div>
+      <div class="faq_answer">We are a for-profit internet startup based in Boston, USA. You can <a href="http://www.forbes.com/sites/ilyapozin/2015/05/06/this-is-facebooks-biggest-competitor-in-emerging-markets" target="_blank">read about us here</a>. Our engineers came up with the idea for the fundraiser and the team implemented it during our quaterly hackathon day. While this fundraiser is not part of our business, we are happy to be able to organize the fundraiser to raise awareness and support for the millions affected by the disaster.</div>
     </div>
     <div class="faq_item">
       <div class="faq_question">Who created the trivia questions?</div>
@@ -392,6 +392,10 @@ function createquiz() {
       </div>
       <div class="nomination-form">
         <div>
+          <div onclick="load_create()" class="create_own button">Create your own Trivia!</div>
+        </div>
+        <div class="postscript-text">Or</div>
+        <div>
           <select class="nomination_input" id="challenge_selection">
             <option value="default">Select an existing challenge for your friends</option>
             {% for item in referral_choices %}
@@ -401,10 +405,6 @@ function createquiz() {
         </div>
         <div>
           <div onclick="gogogo()" class="facebook-button button">Challenge</div>
-        </div>
-        <div class="postscript-text">Or</div>
-        <div>
-          <div onclick="load_create()" class="create_own button">Create your own Trivia!</div>
         </div>
       </div>
     </div>
