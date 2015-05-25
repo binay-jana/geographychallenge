@@ -50,7 +50,7 @@ def get_challenge(qid=None):
 
 @main.route('/<qid>/create_challenge', methods=['POST'])
 @main.route('/create_challenge', methods=['POST'])
-def create(qid):
+def create(qid=0):
     params = request.json
     name = params.get('name') or 'anonymous'
     prompt = params.get('prompt')

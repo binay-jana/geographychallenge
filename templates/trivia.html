@@ -4,8 +4,8 @@
 <meta charset=utf-8 />
 <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=2.0">
 <meta property="og:title" content="Trivia Challenge {{og_title}}" />
-<meta property="og:type" content="article" />
-<meta property="og:image" content="http://3eeed0ab.ngrok.com/static/images/fb_share_pic.jpg" />
+<meta property="og:type" content="janatriviachallenge:trivia" />
+<meta property="og:image" content="http://1052f33a.ngrok.com/static/images/fb_share_pic.jpg" />
 <meta property="og:url" content="{{ request.url }}"/>
 <meta property="fb:app_id" content="1673890419499781"/>
 <meta property="og:description" content="A fundraiser for the earthquake victims in Nepal - complete the trivia challenge, challenge 5 others and donate $10 if you loose."/>
@@ -188,13 +188,14 @@ function gogogo() {
     var q = get_nominated_question();
     if (q!=="default") {
       url = 'http://' + window.location.host + '/' + q;
+    } else {
+      url = window.location.href;
     }
     FB.ui({
         method: 'share_open_graph',
-        action_type: 'og.shares',
+        action_type: 'janatriviachallenge:challenge',
         action_properties: JSON.stringify({
-          object: url,
-          ref: q,
+          trivia: url,
         }),
         href: url
     });
@@ -347,7 +348,7 @@ function createquiz() {
     </div>
     <div class="faq_item">
       <div class="faq_question">I do not know what kind of trivia questions are interesting. Do you have any suggestions?</div>
-      <div class="faq_answer">Think about the topics your friends care about. It could be about your highschool, sports, actors, movies, or about you.</div>
+      <div class="faq_answer">Think about the topics your friends care about. It could be about your highschool, sports, actors, movies, or you.</div>
     </div>
   </div>
   <div class="box">
@@ -410,57 +411,51 @@ function createquiz() {
   </div>
   <div class="box hidden" id="create_box">
     <div class="box-content align_left gray_box">
-      <div class="topsection small-padding-bottom">
-        <div class="question">Create Your Own Challenge:</div>
-      </div>
-      <div class="creation_item">
-        <div class="creation_legend">Your First Name/Nickname:</div>
-        <div class="note-text italic_text">Leave blank if you want to remain anonymous</div>
-        <div class="creation_input">
-          <input type="text" class="creation_box input_form" id="name" autocomplete="off" placeholder="250 Characters Max"/>
-        </div>
-      </div>
-      <div class="creation_item">
-        <div class="creation_legend">The Challenge:</div>
-        <div class="note-text italic_text">Give an one-liner description. For example: "List any 30 of your classmates in St.Xaviers IIE, class of 2006."</div>
-        <div class="creation_input">
-          <input type="text" class="creation_box input_form" id="created_list_question" autocomplete="off" placeholder="250 Characters Max"/>
-        </div>
-      </div>
-      <div class="creation_item">
-        <div class="creation_legend">All the Correct Answers:</div>
-        <div class="note-text italic_text">Enter one at a time. Click "Add" or press enter..</div>
-        <div class="creation_input">
-          <form id="creation_answers_form">
-            <input type="text" class="creation_box input_form" id="creation_answer_box" autocomplete="off"/>
-            <input type="submit" class="button" value="Add"></input>
-          </form>
+      <div class="creation_form">
+        <div class="topsection small-padding-bottom">
+          <div class="question">Create Your Own Challenge:</div>
         </div>
         <div class="creation_item">
-          <div class="answer_box" id="quiz_creation_answers"></div>
+          <div class="creation_legend">Your First Name/Nickname:</div>
+          <div class="note-text italic_text">Leave blank if you want to remain anonymous</div>
+          <div class="creation_input">
+            <input type="text" class="creation_box input_form" id="name" autocomplete="off" placeholder="250 Characters Max"/>
+          </div>
         </div>
-      </div>
-      <div class="creation_item">
-        <div class="creation_legend">Passing Score:</div>
-        <div class="note-text italic_text">Minimum number of correct answers to pass the challenge For example: 30 in the above question.</div>
-        <div class="creation_input">
-          <input type="number" class="creation_box input_form" id="passing_score" autocomplete="off"/>
+        <div class="creation_item">
+          <div class="creation_legend">The Challenge:</div>
+          <div class="note-text italic_text">Give an one-liner description. For example: "List any 30 of your classmates in St.Xaviers IIE, class of 2006."</div>
+          <div class="creation_input">
+            <input type="text" class="creation_box input_form" id="created_list_question" autocomplete="off" placeholder="250 Characters Max"/>
+          </div>
         </div>
-      </div>
-      <div id="start_button" class="center_button two_buttons">
-        <input type="submit" id="cancel_create" class="button red float_left" onclick="cancelcreate()" value="Cancel"></input>
-        <input type="submit" id="submit_create" class="button green float_right" onclick="createquiz()" value="Create"></input>
+        <div class="creation_item">
+          <div class="creation_legend">All the Correct Answers:</div>
+          <div class="note-text italic_text">Enter one at a time. Click "Add" or press enter..</div>
+          <div class="creation_input">
+            <form id="creation_answers_form">
+              <input type="text" class="creation_box input_form" id="creation_answer_box" autocomplete="off"/>
+              <input type="submit" class="button" value="Add"></input>
+            </form>
+          </div>
+          <div class="creation_item">
+            <div class="answer_box" id="quiz_creation_answers"></div>
+          </div>
+        </div>
+        <div class="creation_item">
+          <div class="creation_legend">Passing Score:</div>
+          <div class="note-text italic_text">Minimum number of correct answers to pass the challenge For example: 30 in the above question.</div>
+          <div class="creation_input">
+            <input type="number" class="creation_box input_form" id="passing_score" autocomplete="off"/>
+          </div>
+        </div>
+        <div id="start_button" class="center_button two_buttons">
+          <input type="submit" id="cancel_create" class="button red float_left" onclick="cancelcreate()" value="Cancel"></input>
+          <input type="submit" id="submit_create" class="button green float_right" onclick="createquiz()" value="Create"></input>
+        </div>
       </div>
     </div>
   </div>
-<!--   <div class="center_button">
-          <div
-            class="fb-like"
-            data-share="false"
-            data-width="450"
-            data-show-faces="false">
-          </div>
-  </div> -->
 </div>
 </div>
 </body>
