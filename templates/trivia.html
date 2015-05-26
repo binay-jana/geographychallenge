@@ -499,7 +499,7 @@ function afterCreationFailure() {
           <div class="creation_legend">Passing Score:</div>
           <div class="note-text italic_text">Minimum number of correct answers to pass the challenge For example: 30 in the above question.</div>
           <div class="creation_input">
-            <input type="number" class="creation_box input_form validate[required,custom[number]]" id="passing_score" autocomplete="off"/>
+            <input type="text" class="creation_box input_form validate[required,custom[less_than_answer_count]]" id="passing_score" autocomplete="off"/>
           </div>
         </div>
       </div>

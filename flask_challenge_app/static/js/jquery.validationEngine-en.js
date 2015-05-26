@@ -195,7 +195,14 @@
                     "alertText2": "Expected Format: ",
                     "alertText3": "mm/dd/yyyy hh:mm:ss AM|PM or ", 
                     "alertText4": "yyyy-mm-dd hh:mm:ss AM|PM"
-	            }
+	            },
+                "less_than_answer_count": {                    
+                    //  Check if date is valid by leap year
+            "func": function (field) {
+                    return field.val() < Object.keys(created_correct_answers).length +1;
+                },                      
+             "alertText": "* Passing score should a number and less than/equal to correct answers count i.e."
+                }
             };
             
         }
