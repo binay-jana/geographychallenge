@@ -467,14 +467,14 @@ function afterCreationFailure() {
           <div class="creation_legend">Your First Name/Nickname:</div>
           <div class="note-text italic_text">Leave blank if you want to remain anonymous</div>
           <div class="creation_input">
-            <input type="text" class="creation_box input_form validate[required]" id="name" autocomplete="off" placeholder="250 Characters Max"/>
+            <input type="text" class="creation_box input_form validate[required,maxSize[250]]" id="name" autocomplete="off" placeholder="250 Characters Max"/>
           </div>
         </div>
         <div class="creation_item">
           <div class="creation_legend">The Challenge:</div>
           <div class="note-text italic_text">Give an one-liner description. For example: "List any 30 of your classmates in St.Xaviers IIE, class of 2006."</div>
           <div class="creation_input">
-            <input type="text" class="creation_box input_form validate[required]" id="created_list_question" autocomplete="off" placeholder="250 Characters Max"/>
+            <input type="text" class="creation_box input_form validate[required,maxSize[250]]" id="created_list_question" autocomplete="off" placeholder="250 Characters Max"/>
           </div>
         </div>
         <div class="creation_item">
@@ -494,7 +494,7 @@ function afterCreationFailure() {
           <div class="creation_legend">Passing Score:</div>
           <div class="note-text italic_text">Minimum number of correct answers to pass the challenge For example: 30 in the above question.</div>
           <div class="creation_input">
-            <input type="number" class="creation_box input_form validate[required]" id="passing_score" autocomplete="off"/>
+            <input type="number" class="creation_box input_form validate[required,custom[number]]" id="passing_score" autocomplete="off"/>
           </div>
         </div>
       </div>
