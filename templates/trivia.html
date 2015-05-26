@@ -114,8 +114,7 @@ window.onload = function() {
         $('input#answer_box').val('');        
         return false;
     });
-
-    $('#creation_answers_form').submit(function (event) {
+    function addToAnswers(event) {
         event.preventDefault();
         var answer = $.trim($('input#creation_answer_box').val().toLowerCase());
         if(created_correct_answers[answer]) {
@@ -134,8 +133,14 @@ window.onload = function() {
         });
         $answer_el.append($cross)
         $('#quiz_creation_answers').append($answer_el);
-    });
+    }
+    $('#add_answer').click(addToAnswers);
+    $('#creation_answer_box').keypress(function(e) {
+      if(e.which===13){
+        addToAnswers(e);
+      }
 
+    });
     $('#giveup').click(function(e) {
       clearInterval(counter);
       showResults();
@@ -483,7 +488,7 @@ function afterCreationFailure() {
           <div class="creation_input">
             
               <input type="text" class="creation_box input_form" id="creation_answer_box" autocomplete="off"/>
-              <input type="submit" class="button" value="Add"></input>
+              <input type="button" class="button" id="add_answer" value="Add"></input>
             
           </div>
           <div class="creation_item">
