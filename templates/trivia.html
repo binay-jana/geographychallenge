@@ -12,7 +12,10 @@
 <link rel="shortcut icon" href="/static/images/favicon.ico">
 <title>Trivia Challenge {{og_title}}</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script src="/static/js/jquery.validationEngine.js"></script>
+<script src="/static/js/jquery.validationEngine-en.js"></script>
 <link href="/static/css/trivia.css" media="all" rel="stylesheet" type="text/css"/>
+<link href="/static/css/validationEngine.jquery.css" media="all" rel="stylesheet" type="text/css"/>
 <script>
     var question = {{ question|safe }};
     var correctly_answered = [];
@@ -22,6 +25,10 @@
 </head>
 <body>
 <script>
+$(document).ready(function(){
+    $("#creation_answers_form").validationEngine();
+   });
+
 var counter;
 (function($) {
     $.fn.flash_message = function(options) {
@@ -107,8 +114,7 @@ window.onload = function() {
         $('input#answer_box').val('');        
         return false;
     });
-
-    $('#creation_answers_form').submit(function (event) {
+    function addToAnswers(event) {
         event.preventDefault();
         var answer = $.trim($('input#creation_answer_box').val().toLowerCase());
         if(created_correct_answers[answer]) {
@@ -127,8 +133,14 @@ window.onload = function() {
         });
         $answer_el.append($cross)
         $('#quiz_creation_answers').append($answer_el);
-    });
+    }
+    $('#add_answer').click(addToAnswers);
+    $('#creation_answer_box').keypress(function(e) {
+      if(e.which===13){
+        addToAnswers(e);
+      }
 
+    });
     $('#giveup').click(function(e) {
       clearInterval(counter);
       showResults();
@@ -451,6 +463,7 @@ function afterCreationFailure() {
   </div>
   <div class="box hidden" id="create_box">
     <div class="box-content align_left gray_box">
+    <form id="creation_answers_form">
       <div id="creation_form">
         <div class="topsection small-padding-bottom">
           <div class="question">Create Your Own Challenge:</div>
@@ -459,24 +472,24 @@ function afterCreationFailure() {
           <div class="creation_legend">Your First Name/Nickname:</div>
           <div class="note-text italic_text">Leave blank if you want to remain anonymous</div>
           <div class="creation_input">
-            <input type="text" class="creation_box input_form" id="name" autocomplete="off" placeholder="250 Characters Max"/>
+            <input type="text" class="creation_box input_form validate[required,maxSize[250]]" id="name" autocomplete="off" placeholder="250 Characters Max"/>
           </div>
         </div>
         <div class="creation_item">
           <div class="creation_legend">The Challenge:</div>
           <div class="note-text italic_text">Give an one-liner description. For example: "List any 30 of your classmates in St.Xaviers IIE, class of 2006."</div>
           <div class="creation_input">
-            <input type="text" class="creation_box input_form" id="created_list_question" autocomplete="off" placeholder="250 Characters Max"/>
+            <input type="text" class="creation_box input_form validate[required,maxSize[250]]" id="created_list_question" autocomplete="off" placeholder="250 Characters Max"/>
           </div>
         </div>
         <div class="creation_item">
           <div class="creation_legend">All the Correct Answers:</div>
           <div class="note-text italic_text">Enter one at a time. Click "Add" or press enter..</div>
           <div class="creation_input">
-            <form id="creation_answers_form">
+            
               <input type="text" class="creation_box input_form" id="creation_answer_box" autocomplete="off"/>
-              <input type="submit" class="button" value="Add"></input>
-            </form>
+              <input type="button" class="button" id="add_answer" value="Add"></input>
+            
           </div>
           <div class="creation_item">
             <div class="answer_box" id="quiz_creation_answers"></div>
@@ -486,7 +499,7 @@ function afterCreationFailure() {
           <div class="creation_legend">Passing Score:</div>
           <div class="note-text italic_text">Minimum number of correct answers to pass the challenge For example: 30 in the above question.</div>
           <div class="creation_input">
-            <input type="number" class="creation_box input_form" id="passing_score" autocomplete="off"/>
+            <input type="text" class="creation_box input_form validate[required,custom[less_than_answer_count]]" id="passing_score" autocomplete="off"/>
           </div>
         </div>
       </div>
@@ -503,6 +516,7 @@ function afterCreationFailure() {
         <input type="submit" id="cancel_create" class="button red float_left" onclick="cancelcreate()" value="Cancel"></input>
         <input type="submit" id="submit_create" class="button green float_right" onclick="createquiz()" value="Create"></input>
       </div>
+      </form>
     </div>
   </div>
 </div>
