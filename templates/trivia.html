@@ -118,7 +118,7 @@ window.onload = function() {
     function addToAnswers(event) {
         event.preventDefault();
         var answer = $.trim($('input#creation_answer_box').val().toLowerCase());
-        if(created_correct_answers[answer]) {
+        if(created_correct_answers[answer] || !answer) {
           return;
         }
         created_correct_answers[answer] = 1;
@@ -442,7 +442,7 @@ function afterCreationFailure() {
 </script>
 <div class="top-header">
     <div class="align_center toppadding300">
-        <a class="button transparent" href="https://www.gofundme.com/nepalvillagers/donate" target="_blank">Click Here to Make a Donation!</a>
+        <a class="button transparent" href="https://www.gofundme.com/helpyogi/donate" target="_blank">Click Here to Donate!</a>
     </div>
 </div>
 <div class="map-overlay">
