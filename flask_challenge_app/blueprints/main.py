@@ -33,7 +33,8 @@ def get_challenge(qid=None):
     if qid and qid.isdigit():
         if int(qid) >= len(QUESTIONS):
             question = get_question(qid)
-            referral_choices.insert(0, (qid, question['prompt']))
+            if question:
+                referral_choices.insert(0, (qid, question['prompt']))
         else:
             question = QUESTIONS[int(qid)]
     if not question:
