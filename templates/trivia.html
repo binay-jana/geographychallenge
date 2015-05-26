@@ -118,7 +118,7 @@ window.onload = function() {
     function addToAnswers(event) {
         event.preventDefault();
         var answer = $.trim($('input#creation_answer_box').val().toLowerCase());
-        if(created_correct_answers[answer]) {
+        if(created_correct_answers[answer] || !answer) {
           return;
         }
         created_correct_answers[answer] = 1;
@@ -442,7 +442,7 @@ function afterCreationFailure() {
 </script>
 <div class="top-header">
     <div class="align_center toppadding300">
-        <a class="button transparent" href="https://www.gofundme.com/nepalvillagers/donate" target="_blank">Click Here to Make a Donation!</a>
+        <a class="button transparent" href="https://www.gofundme.com/helpyogi/donate" target="_blank">Click Here to Donate!</a>
     </div>
 </div>
 <div class="map-overlay">
@@ -543,7 +543,7 @@ function afterCreationFailure() {
           <div class="creation_legend">The Challenge:</div>
           <div class="note-text italic_text">Give an one-liner description. For example: "Name any 20 people who were in section E, St.Xaviers Highschool, class of 2006."</div>
           <div class="creation_input">
-            <input type="text" class="creation_box input_form" id="created_list_question" autocomplete="off" placeholder="250 Characters Max" onfocusout="validateChallenge()"/>
+            <input type="text" class="creation_box input_form" id="created_list_question" autocomplete="off" placeholder="200 Characters Max" onfocusout="validateChallenge()"/>
           </div>
           <div class="error_string" id="challenge_error"></div>
         </div>
