@@ -641,3 +641,11 @@ label.nomination {
   margin-bottom: 20px;
   font-size: 15px;
 }
+.error {
+  border: 1px solid #BA4C4C !important;
+  background-color: #EECCCC !important; 
+}
+.error_string {
+  font-size: 14px;
+  color: #BA4C4C;
+}
