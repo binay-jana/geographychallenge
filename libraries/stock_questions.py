@@ -6,7 +6,7 @@ QUESTIONS = [
         'is_name_things': True,
         'total_answers': 34,
         'prompt': "Name any 14 Oscar Best Pictures since 1980",
-        'passing_score': 10,
+        'passing_score': 9,
         'answers': {'the lord of the rings': 10, 'dance with wolves': 23, 'ordinary people': 33, "the king's speech": 4, 'the lord of the rings: the return of the king': 10, 'gladiator': 13, 'the hurt locker': 5, 'forest gump': 19, '12 years a slave': 1, 'the artist': 3, 'platoon': 27, 'chicago': 11, 'a beautiful mind': 12, 'million dollar baby': 9, 'driving miss daisy': 24, 'crash': 8, 'american beauty': 14, "schindler's list": 20, 'slumdog millionaire': 6, 'rain man': 25, 'unforgiven': 21, 'amadeus': 29, 'argo': 2, 'braveheart': 18, 'out of africa': 28, 'chariots of fire': 32, 'the last emperor': 26, 'titanic': 16, 'no country for old men': 7, 'birdman': 0, 'the english patient': 17, 'gandhi': 31, 'shakespeare in love': 15, 'the silence of the lambs': 22, 'terms of endearment': 30},
         'names': [
             'Birdman',
@@ -48,8 +48,8 @@ QUESTIONS = [
         'id': 0,
         'is_name_things': True,
         'total_answers': 30,
-        'prompt': "Name 10 of the Largest 30 Cities in the World",
-        'passing_score': 10,
+        'prompt': "Name 7 of the Largest 30 Cities in the World",
+        'passing_score': 7,
         'answers': {
             "tokyo": 0,
             "jakarta": 1,
@@ -119,8 +119,8 @@ QUESTIONS = [
         'id': 1,
         'is_name_things': True,
         'total_answers': 54,
-        'prompt': "Name at least 12 African countries",
-        'passing_score': 12,
+        'prompt': "Name at least 9 African countries",
+        'passing_score': 9,
         'answers': {
             "algeria": 0,
             "angola": 1,
@@ -242,8 +242,8 @@ QUESTIONS = [
         'id': 3,
         'is_name_things': True,
         'total_answers': 34,
-        'prompt': "Name any 10 states of India",
-        'passing_score': 10,
+        'prompt': "Name any 7 states of India",
+        'passing_score': 7,
         'answers': {'jammu': 9, 'kashmir': 9, 'orissa': 19, 'telangana': 24, 'uttarakhand': 27, 'karnataka': 11, 'himachal pradesh': 8, 'mizoram': 17, 'tamil nadu': 23, 'haryana': 7, 'punjab': 20, 'goa': 5, 'chhattisgarh': 4, 'kerala': 12, 'bihar': 3, 'west bengal': 28, 'andhra pradesh': 0, 'jharkhand': 10, 'meghalaya': 16, 'assam': 2, 'manipur': 15, 'rajasthan': 21, 'arunachal pradesh': 1, 'sikkim': 22, 'maharashtra': 14, 'maharastra': 14, 'jammu & kashmir': 9, 'nagaland': 18, 'madhya pradesh': 13, 'uttar pradesh': 26, 'gujarat': 6, 'odisha': 19, 'tripura': 25},
         'names': [
             'Andhra Pradesh',
@@ -280,8 +280,8 @@ QUESTIONS = [
         'id': 4,
         'is_name_things': True,
         'total_answers': 41,
-        'prompt': "Name any 11 presidents of the United States of America",
-        'passing_score': 11,
+        'prompt': "Name any 8 presidents of the United States of America",
+        'passing_score': 8,
         'answers': {'george w bush': 42, 'james buchanan': 14, 'andrew johnson': 16, 'william harrison': 8, 'clinton': 41, 'abraham lincoln': 15, 'lyndon johnson': 35, 'kennedy': 34, 'ulysses grant': 17, 'william mckinley': 24, 'john kennedy': 34, 'william h. taft': 26, 'harrison': 8, 'harry truman': 32, 'george washington': 0, 'dwight eisenhower': 33, 'william h. harrison': 8, 'ulysses s. grant': 17, 'martin van buren': 7, 'richard nixon': 36, 'herbert hoover': 30, 'warren harding': 28, 'woodrow wilson': 27, 'john tyler': 9, 'thomas jefferson': 2, 'ronald reagan': 39, 'bill clinton': 41, 'jefferson': 2, 'warren g. harding': 28, 'polk': 10, 'eisenhower': 33, 'james garfield': 19, 'franklin roosevelt': 31, 'grover cleveland': 23, 'chester arthur': 20, 'lyndon b. johnson': 35, 'millard fillmore': 12, 'truman': 32, 'harry s. truman': 32, 'calvin coolidge': 29, 'james monroe': 4, 'george h. w. bush': 40, 'john quincy adams': 5, 'zachary taylor': 11, 'chester a. arthur': 20, 'george w. bush': 41, 'franklin d. roosevelt': 31, 'barack obama': 21, 'theodore roosevelt': 25, 'rutherford b. hayes': 18, 'william taft': 26, 'james polk': 10, 'james madison': 3, 'jimmy carter': 38, 'obama': 21, 'lincoln': 15, 'john adams': 1, 'benjamin harrison': 22, 'franklin pierce': 13, 'john f. kennedy': 34, 'rutherford hayes': 18, 'gerald ford': 37, 'dwight d. eisenhower': 33, 'james k. polk': 10, 'andrew jackson': 6},
         'names': ['George Washington', 'John Adams', 'Thomas Jefferson', 'James Madison', 'James Monroe', 'John Quincy Adams', 'Andrew Jackson', 'Martin Van Buren', 'William H. Harrison', 'John Tyler', 'James K. Polk', 'Zachary Taylor', 'Millard Fillmore', 'Franklin Pierce', 'James Buchanan', 'Abraham Lincoln', 'Andrew Johnson', 'Ulysses S. Grant', 'Rutherford B. Hayes', 'James Garfield', 'Chester A. Arthur', 'Barack Obama', 'Benjamin Harrison', 'Grover Cleveland', 'William McKinley', 'Theodore Roosevelt', 'William H. Taft', 'Woodrow Wilson', 'Warren G. Harding', 'Calvin Coolidge', 'Herbert Hoover', 'Franklin D. Roosevelt', 'Harry S. Truman', 'Dwight D. Eisenhower', 'John F. Kennedy', 'Lyndon B. Johnson', 'Richard Nixon', 'Gerald Ford', 'Jimmy Carter', 'Ronald Reagan', 'George H. W. Bush', 'Bill Clinton', 'George W. Bush']
     }
