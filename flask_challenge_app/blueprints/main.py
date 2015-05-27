@@ -13,7 +13,7 @@ _logger = Log.getLogger(__name__)
 
 
 def get_random_stock_question_id():
-    return randint(0, len(QUESTIONS) - 1)
+    return randint(0, 2)
 
 
 def get_question(question_id):
