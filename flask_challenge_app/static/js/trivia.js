@@ -219,7 +219,7 @@ function showCreatedQIDShare() {
 
 function showFacebookUI(url){
     url = 'https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(url);
-    window.open(url,'_blank');
+    window.open(url, 'newWin','width=800,height=600');
 }
 
 function start_timer() {
