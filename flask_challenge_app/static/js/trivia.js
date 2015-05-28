@@ -173,8 +173,8 @@ window.onload = function() {
 
 function populateFAQ() {
     var text = "<div class='faq_item'>" +
-    "<div class='faq_question'>How is my donation going to be used?</div>" +
-    "<div class='faq_answer'>Jana is going to hand over the collected donations to the <a href='http://pmrelief.opmcm.gov.np/about.aspx' target='_blank'>Nepali Prime Minister Disaster Relief Fund</a> and the <a href='http://www.unicef.org/infobycountry/nepal.html' target='_blank'>UNICEF</a>. These organizations have been helping the victims of the earthquake since the very first day after the earthquake. Both of these organizations are transparent and well regulated.</div>" +
+    "<div class='faq_question'>Why should I donate?</div>" +
+    "<div class='faq_answer'>The 2015 Nepal earthquake killed more than 8,000 people in the country. More than 300,000 houses were completely destroyed and hundreds of villages were completely flattened across the country. Millions of Children have been affected by the disaster. <a href='http://www.unicef.org/infobycountry/nepal.html' target='_blank'>UNICEF</a> has been helping the victims of the earthquake since the very first day after the earthquake and needs your support to continue doing so! </div>" +
     "</div>" +
     "<div class='faq_item'>" +
     "<div class='faq_question'>What is Jana? Why is the company organizing this fundraiser?</div>" +
