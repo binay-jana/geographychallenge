@@ -218,14 +218,8 @@ function showCreatedQIDShare() {
 }
 
 function showFacebookUI(url){
-    FB.ui({
-        method: 'share_open_graph',
-        action_type: 'og.likes',
-        action_properties: {
-            object: url,
-        },
-        href: url
-    });
+    url = 'https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(url);
+    window.open(url,'_blank');
 }
 
 function start_timer() {
