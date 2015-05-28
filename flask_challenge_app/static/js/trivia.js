@@ -220,10 +220,10 @@ function showCreatedQIDShare() {
 function showFacebookUI(url){
     FB.ui({
         method: 'share_open_graph',
-        action_type: 'janatriviachallenge:challenge',
-        action_properties: JSON.stringify({
-          trivia: url,
-        }),
+        action_type: 'og.likes',
+        action_properties: {
+            object: url,
+        },
         href: url
     });
 }
@@ -235,7 +235,7 @@ function start_timer() {
         if (time_left < 0) {
             clearInterval(counter);
             showResults();
-            return
+            return;
         }
         $('#time_left').text(time_left);
     }
